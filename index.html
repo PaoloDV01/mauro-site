@@ -272,20 +272,16 @@ header.scrolled {
   100% { left: 150%; }
 }
 
-/* === STATS: numero grande con scale entrance === */
-#chi-siamo .grid > div > p:first-child {
-  opacity: 0;
-  transform: scale(0.82) translateY(10px);
-  transition: opacity 600ms cubic-bezier(0.25, 1, 0.5, 1),
-              transform 600ms cubic-bezier(0.25, 1, 0.5, 1);
+/* === STATS: animated counter numbers === */
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  font-variant-numeric: tabular-nums;
 }
-#chi-siamo.visible .grid > div > p:first-child {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-}
-#chi-siamo .grid > div:nth-child(1) > p:first-child { transition-delay: 200ms; }
-#chi-siamo .grid > div:nth-child(2) > p:first-child { transition-delay: 360ms; }
-#chi-siamo .grid > div:nth-child(3) > p:first-child { transition-delay: 520ms; }
 
 /* === PILL PAESI: stagger pop in === */
 @keyframes pill-pop {
@@ -331,14 +327,277 @@ header.scrolled {
   .btn-cta-primary::after {
     animation: none;
   }
-  #chi-siamo .grid > div > p:first-child {
+  /* stat counters: just show final value immediately */
+  .stat-number { font-variant-numeric: tabular-nums; }
+  #coperture.visible .flex-wrap > span {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* === HERO: ROTATING WORD === */
+.hero-animated-wrapper {
+  display: block;
+  overflow: hidden;
+  height: 1.15em; /* matches h1 line-height */
+}
+.hero-word {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 420ms cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 300ms ease-out;
+  color: var(--cta);
+}
+.hero-word--active {
+  transform: translateY(0%);
+  opacity: 1;
+}
+.hero-word--exit {
+  transform: translateY(-110%);
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-word {
+    transform: translateY(0%) !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .hero-word--exit {
+    display: none;
+  }
+}
+
+/* === HERO: PARTICLES === */
+#hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 60%, transparent 100%);
+          mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 60%, transparent 100%);
+}
+
+/* === LIQUID GLASS BUTTON === */
+.liquid-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  transform: translateZ(0);
+  transition: transform 200ms cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 200ms cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.28),
+    0 1px 4px rgba(0,0,0,0.16),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+}
+.liquid-btn:hover {
+  transform: scale(1.03) translateZ(0);
+  box-shadow:
+    0 8px 28px rgba(0,0,0,0.32),
+    0 2px 8px rgba(0,0,0,0.20),
+    inset 0 1px 0 rgba(255,255,255,0.28);
+}
+.liquid-btn:active {
+  transform: scale(0.97) translateZ(0);
+  transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+}
+.liquid-btn:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.90);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+.liquid-btn__glass {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: url('#container-glass') blur(10px) brightness(1.08) saturate(1.4);
+  -webkit-backdrop-filter: blur(10px) brightness(1.08) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.30);
+  z-index: 0;
+}
+.liquid-btn__shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    150deg,
+    rgba(255,255,255,0.22) 0%,
+    rgba(255,255,255,0.05) 45%,
+    rgba(0,0,0,0.10) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+.liquid-btn__text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffff;
+  padding: 12px 28px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.30);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .liquid-btn {
+    transition: none;
+  }
+  .liquid-btn:hover {
+    transform: none;
+  }
+}
+
+/* === SECTION: CTA BAND === */
+.cta-section {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 380px;
+  padding: 96px 24px;
+}
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.58);
+  z-index: 1;
+}
+.cta-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 640px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms cubic-bezier(0.25, 1, 0.5, 1),
+              transform 700ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+.cta-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cta-content h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.cta-content p {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.cta-btn {
+  display: inline-block;
+  background-color: var(--cta);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 14px 32px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 150ms ease-out,
+              transform 200ms cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 200ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+.cta-btn:hover {
+  background-color: var(--cta-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(194, 65, 12, 0.40), 0 2px 8px rgba(194, 65, 12, 0.25);
+}
+.cta-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 6px rgba(194, 65, 12, 0.25);
+  transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+}
+.cta-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cta-content {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  #coperture.visible .flex-wrap > span {
+}
+
+/* === SECTION: PARTNER LOGOS STRIP === */
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.logos-track {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  width: max-content;
+  animation: logo-scroll 36s linear infinite;
+  will-change: transform;
+}
+
+.logos-wrapper {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+          mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+}
+
+/* Pause on hover of the whole strip */
+#partner-strip:hover .logos-track {
+  animation-play-state: paused;
+}
+
+/* Logo items */
+.logo-item {
+  opacity: 0.50;
+  filter: grayscale(1);
+  transition: opacity 200ms ease-out, filter 200ms ease-out;
+  flex-shrink: 0;
+  display: block;
+}
+.logo-item:hover {
+  opacity: 0.85;
+  filter: grayscale(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logos-track {
     animation: none;
-    opacity: 1;
+  }
+  .logos-wrapper {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+            mask-image: none;
   }
 }
 </style>
@@ -391,6 +650,9 @@ header.scrolled {
   <!-- Noise overlay -->
   <div class="absolute inset-0 pointer-events-none" style="filter: url(#noise); opacity: 0.04; background: white;" aria-hidden="true"></div>
 
+  <!-- Particles canvas -->
+  <div id="hero-particles" aria-hidden="true"></div>
+
   <div
     class="relative z-10 max-w-7xl mx-auto px-4 py-24 lg:min-h-screen lg:flex lg:items-center lg:gap-12"
     style="padding-top: 96px; padding-bottom: 96px;"
@@ -398,10 +660,23 @@ header.scrolled {
     <!-- Text column -->
     <div class="lg:w-[55%] mb-12 lg:mb-0">
       <p class="uppercase text-sm font-medium mb-6" style="font-family: var(--font-body); letter-spacing: 0.12em; color: var(--cta);">Trasporti · Logistica · Spedizioni</p>
-      <h1 class="text-white mb-6" style="font-family: var(--font-display); font-weight: 800; font-size: clamp(2.5rem, 5vw, 4rem);">Muoviamo la tua merce in Italia e in Europa.</h1>
+      <h1 class="text-white mb-6" style="font-family: var(--font-display); font-weight: 800; font-size: clamp(2.5rem, 5vw, 4rem);">Trasporti
+        <span class="hero-animated-wrapper" aria-live="polite" aria-atomic="true">
+          <span class="hero-word">veloci</span>
+          <span class="hero-word">affidabili</span>
+          <span class="hero-word">tracciabili</span>
+          <span class="hero-word">puntuali</span>
+          <span class="hero-word">sicuri</span>
+        </span>
+        in Italia e in Europa.
+      </h1>
       <p class="mb-10" style="font-family: var(--font-body); font-weight: 400; max-width: 52ch; color: rgba(255,255,255,0.80);">Soluzioni di trasporto su misura per aziende. Puntualità, tracciabilità e un interlocutore unico per ogni spedizione.</p>
       <div class="flex flex-wrap gap-4">
-        <a href="#contact" class="btn-cta-primary inline-block text-white font-medium text-base transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5" style="border-radius: 4px; padding: 12px 28px;">Richiedi un preventivo</a>
+        <a href="#contact" class="liquid-btn" aria-label="Richiedi un preventivo">
+          <div class="liquid-btn__glass" style="backdrop-filter: url('#container-glass') blur(10px) brightness(1.08) saturate(1.4); -webkit-backdrop-filter: blur(10px) brightness(1.08) saturate(1.4);"></div>
+          <div class="liquid-btn__shadow"></div>
+          <span class="liquid-btn__text">Richiedi un preventivo</span>
+        </a>
         <a href="#servizi" class="inline-block text-white font-medium text-base transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5" style="border: 1px solid white; border-radius: 4px; padding: 12px 28px;">Scopri i servizi</a>
       </div>
     </div>
@@ -415,6 +690,49 @@ header.scrolled {
         style="box-shadow: 0 24px 64px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.2);"
         loading="eager"
       >
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: partner logos strip -->
+<section id="partner-strip" aria-label="Le aziende che ci hanno scelto" style="background-color: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 40px 0;">
+
+  <!-- Eyebrow label -->
+  <p class="text-center mb-8" style="font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted);">Le aziende che ci hanno scelto</p>
+
+  <!-- Hidden list for screen readers -->
+  <ul class="sr-only">
+    <li>Manifattura Italiana</li>
+    <li>Industrie Riunite</li>
+    <li>Gruppo Alfa</li>
+    <li>Forniture Sud</li>
+    <li>Costruzioni Nord</li>
+    <li>Holding Partner</li>
+    <li>Distributori Est</li>
+    <li>Produzione 3000</li>
+  </ul>
+
+  <!-- Animated strip (decorative, aria-hidden) -->
+  <div class="logos-wrapper" aria-hidden="true">
+    <div class="logos-track">
+      <!-- Set 1 -->
+      <img class="logo-item" src="https://placehold.co/120x38/0E3B43/FAF7F2?text=Manifattura" alt="" width="120" height="38">
+      <img class="logo-item" src="https://placehold.co/130x38/1F5D66/FAF7F2?text=Industrie+Riunite" alt="" width="130" height="38">
+      <img class="logo-item" src="https://placehold.co/110x38/0E3B43/FAF7F2?text=Gruppo+Alfa" alt="" width="110" height="38">
+      <img class="logo-item" src="https://placehold.co/120x38/1F5D66/FAF7F2?text=Forniture+Sud" alt="" width="120" height="38">
+      <img class="logo-item" src="https://placehold.co/130x38/0E3B43/FAF7F2?text=Costruzioni+Nord" alt="" width="130" height="38">
+      <img class="logo-item" src="https://placehold.co/115x38/1F5D66/FAF7F2?text=Holding+Partner" alt="" width="115" height="38">
+      <img class="logo-item" src="https://placehold.co/120x38/0E3B43/FAF7F2?text=Distributori+Est" alt="" width="120" height="38">
+      <img class="logo-item" src="https://placehold.co/125x38/1F5D66/FAF7F2?text=Produzione+3000" alt="" width="125" height="38">
+      <!-- Set 2 — duplicate for seamless loop -->
+      <img class="logo-item" src="https://placehold.co/120x38/0E3B43/FAF7F2?text=Manifattura" alt="" width="120" height="38">
+      <img class="logo-item" src="https://placehold.co/130x38/1F5D66/FAF7F2?text=Industrie+Riunite" alt="" width="130" height="38">
+      <img class="logo-item" src="https://placehold.co/110x38/0E3B43/FAF7F2?text=Gruppo+Alfa" alt="" width="110" height="38">
+      <img class="logo-item" src="https://placehold.co/120x38/1F5D66/FAF7F2?text=Forniture+Sud" alt="" width="120" height="38">
+      <img class="logo-item" src="https://placehold.co/130x38/0E3B43/FAF7F2?text=Costruzioni+Nord" alt="" width="130" height="38">
+      <img class="logo-item" src="https://placehold.co/115x38/1F5D66/FAF7F2?text=Holding+Partner" alt="" width="115" height="38">
+      <img class="logo-item" src="https://placehold.co/120x38/0E3B43/FAF7F2?text=Distributori+Est" alt="" width="120" height="38">
+      <img class="logo-item" src="https://placehold.co/125x38/1F5D66/FAF7F2?text=Produzione+3000" alt="" width="125" height="38">
     </div>
   </div>
 </section>
@@ -536,47 +854,50 @@ header.scrolled {
   </div>
 </section>
 
-<section id="chi-siamo" class="reveal py-16 lg:py-24" style="background-color: var(--bg-base);">
+<section id="chi-siamo" class="py-16 lg:py-24" style="background-color: var(--primary);">
   <div class="max-w-7xl mx-auto px-4">
 
     <!-- Intestazione sezione -->
-    <div style="margin-bottom: 64px;">
+    <div style="margin-bottom: 64px; text-align: center;">
       <p class="uppercase font-medium" style="font-family: var(--font-body); font-size: 12px; letter-spacing: 0.10em; color: var(--cta);">PERCHÉ SCEGLIERCI</p>
-      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.75rem); color: var(--primary); letter-spacing: -0.03em; margin-top: 12px;">Numeri che parlano per noi</h2>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.75rem); color: #ffffff; letter-spacing: -0.03em; margin-top: 12px;">Numeri che parlano per noi</h2>
     </div>
 
-    <!-- Tre blocchi numerici -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
+    <!-- 4 blocchi numerici: 2 col mobile, 4 col desktop -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
 
-      <!-- Blocco 1 — Anno di fondazione -->
-      <div class="lg:border-r lg:pr-12" style="border-color: var(--border);">
-        <p style="font-family: var(--font-display); font-weight: 800; font-size: clamp(3.5rem, 6vw, 5rem); color: var(--primary); letter-spacing: -0.04em; line-height: 1.0;">[ANNO]</p>
-        <p style="font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--primary); margin-top: 12px;">Anno di fondazione</p>
-        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 8px; max-width: 28ch;">Anni di esperienza nel settore dei trasporti B2B.</p>
+      <!-- Blocco 1 -->
+      <div class="text-center lg:border-r" style="border-color: rgba(255,255,255,0.12); padding: 0 32px;">
+        <p class="stat-number" data-end="500" data-suffix="+">0</p>
+        <p style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: rgba(255,255,255,0.60); margin-top: 12px; letter-spacing: 0.01em;">Spedizioni al mese</p>
       </div>
 
-      <!-- Blocco 2 — Aziende clienti -->
-      <div class="lg:border-r lg:pl-12 lg:pr-12" style="border-color: var(--border);">
-        <p style="font-family: var(--font-display); font-weight: 800; font-size: clamp(3.5rem, 6vw, 5rem); color: var(--primary); letter-spacing: -0.04em; line-height: 1.0;">XX+</p>
-        <p style="font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--primary); margin-top: 12px;">Aziende clienti</p>
-        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 8px; max-width: 28ch;">Imprese italiane ed europee che si affidano a noi ogni anno.</p>
+      <!-- Blocco 2 -->
+      <div class="text-center lg:border-r" style="border-color: rgba(255,255,255,0.12); padding: 0 32px;">
+        <p class="stat-number" data-end="15" data-suffix=" anni">0</p>
+        <p style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: rgba(255,255,255,0.60); margin-top: 12px; letter-spacing: 0.01em;">Di esperienza</p>
       </div>
 
-      <!-- Blocco 3 — Puntualità -->
-      <div class="lg:pl-12">
-        <p style="font-family: var(--font-display); font-weight: 800; font-size: clamp(3.5rem, 6vw, 5rem); color: var(--primary); letter-spacing: -0.04em; line-height: 1.0;">XX%</p>
-        <p style="font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--primary); margin-top: 12px;">Puntualità nelle consegne</p>
-        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 8px; max-width: 28ch;">Il nostro impegno è arrivare quando promesso.</p>
+      <!-- Blocco 3 -->
+      <div class="text-center lg:border-r" style="border-color: rgba(255,255,255,0.12); padding: 0 32px;">
+        <p class="stat-number" data-end="98" data-suffix="%">0</p>
+        <p style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: rgba(255,255,255,0.60); margin-top: 12px; letter-spacing: 0.01em;">Consegne puntuali</p>
+      </div>
+
+      <!-- Blocco 4 -->
+      <div class="text-center" style="padding: 0 32px;">
+        <p class="stat-number" data-end="200" data-suffix="+">0</p>
+        <p style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: rgba(255,255,255,0.60); margin-top: 12px; letter-spacing: 0.01em;">Clienti attivi</p>
       </div>
 
     </div>
 
-    <!-- Separatore orizzontale -->
-    <hr style="border: none; border-top: 1px solid var(--border); margin-top: 64px;">
+    <!-- Separatore -->
+    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.12); margin-top: 64px;">
 
-    <!-- Riga CTA finale -->
+    <!-- Riga CTA -->
     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between" style="margin-top: 48px;">
-      <p style="font-family: var(--font-body); font-weight: 400; font-size: 1rem; color: var(--text-muted); max-width: 52ch;">Vuoi sapere se siamo il partner giusto per la tua azienda? Raccontaci le tue esigenze senza impegno.</p>
+      <p style="font-family: var(--font-body); font-weight: 400; font-size: 1rem; color: rgba(255,255,255,0.65); max-width: 52ch;">Vuoi sapere se siamo il partner giusto per la tua azienda? Raccontaci le tue esigenze senza impegno.</p>
       <a href="#contact" class="btn-cta-primary inline-block text-white font-medium transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5 mt-6 lg:mt-0" style="border-radius: 4px; padding: 12px 28px;">Richiedi un preventivo</a>
     </div>
 
@@ -648,6 +969,17 @@ header.scrolled {
 
     </form>
 
+  </div>
+</section>
+
+<!-- SECTION: CTA band -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <img src="https://placehold.co/1440x500/1a1a1a/333333" class="cta-bg" alt="" loading="lazy">
+  <div class="cta-overlay" aria-hidden="true"></div>
+  <div class="cta-content">
+    <h2 id="cta-heading">Pronto a spedire con noi?</h2>
+    <p>Preventivo gratuito, risposta in 24 ore.</p>
+    <a href="#contact" class="cta-btn">Richiedi un preventivo</a>
   </div>
 </section>
 
@@ -747,6 +1079,157 @@ header.scrolled {
     }
   }, { passive: true });
 })();
+</script>
+
+<script>
+/* === HERO: ROTATING WORD === */
+(function () {
+  var words = document.querySelectorAll('#hero .hero-word');
+  if (!words.length) return;
+
+  var current = 0;
+  words[current].classList.add('hero-word--active');
+
+  function next() {
+    var prev = current;
+    current = (current + 1) % words.length;
+
+    // Exit the current word (up)
+    words[prev].classList.remove('hero-word--active');
+    words[prev].classList.add('hero-word--exit');
+
+    // Reset it to initial position after exit transition completes
+    // (disable transition momentarily to avoid a visible return trip)
+    setTimeout(function () {
+      var el = words[prev];
+      el.style.transition = 'none';
+      el.classList.remove('hero-word--exit');
+      void el.offsetHeight; // force reflow
+      el.style.transition = '';
+    }, 450);
+
+    // Enter the next word (from below)
+    words[current].classList.add('hero-word--active');
+
+    setTimeout(next, 2000);
+  }
+
+  setTimeout(next, 2000);
+}());
+</script>
+
+<script>
+/* === STATS: animated counters with IntersectionObserver === */
+(function () {
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function animateCounter(el, from, to, duration) {
+    var suffix = el.getAttribute('data-suffix') || '';
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var elapsed = ts - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var value = Math.round(from + (to - from) * easeOutQuart(progress));
+      el.textContent = value + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  var section = document.getElementById('chi-siamo');
+  if (!section || !window.IntersectionObserver) return;
+
+  var triggered = false;
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting && !triggered) {
+        triggered = true;
+        section.querySelectorAll('.stat-number').forEach(function (el) {
+          var end = parseInt(el.getAttribute('data-end'), 10);
+          animateCounter(el, 0, end, 1800);
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(section);
+}());
+</script>
+
+<!-- tsParticles slim CDN -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2/tsparticles.slim.bundle.min.js"></script>
+<script>
+/* === HERO: PARTICLES INIT === */
+(function () {
+  if (typeof tsParticles === 'undefined') return;
+  var isMobile = window.innerWidth < 768;
+  tsParticles.load('hero-particles', {
+    background: { color: { value: 'transparent' } },
+    fpsLimit: 60,
+    particles: {
+      number: { value: isMobile ? 30 : 60, density: { enable: true } },
+      color: { value: '#FAF7F2' },
+      size: { value: { min: 0.4, max: 1.5 } },
+      opacity: { value: { min: 0.08, max: 0.42 } },
+      move: {
+        enable: true,
+        speed: 0.8,
+        direction: 'none',
+        random: true,
+        straight: false,
+        outModes: { default: 'out' }
+      },
+      links: { enable: false }
+    },
+    interactivity: {
+      events: {
+        onClick: { enable: false },
+        onHover: { enable: false }
+      }
+    },
+    detectRetina: true
+  });
+}());
+</script>
+
+<!-- SVG: liquid glass filter (used once, referenced via backdrop-filter: url('#container-glass')) -->
+<svg style="display:none" aria-hidden="true">
+  <defs>
+    <filter id="container-glass" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.05" numOctaves="1" seed="1" result="turbulence"/>
+      <feGaussianBlur in="turbulence" stdDeviation="2" result="blurredNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="blurredNoise" scale="70" xChannelSelector="R" yChannelSelector="B" result="displaced"/>
+      <feGaussianBlur in="displaced" stdDeviation="4" result="finalBlur"/>
+      <feComposite in="finalBlur" in2="finalBlur" operator="over"/>
+    </filter>
+  </defs>
+</svg>
+
+<script>
+/* === CTA BAND: entrance animation === */
+(function () {
+  var content = document.querySelector('.cta-content');
+  if (!content || !window.IntersectionObserver) {
+    if (content) content.classList.add('visible');
+    return;
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        content.classList.add('visible');
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.25 });
+  observer.observe(content.closest('.cta-section'));
+}());
 </script>
 
 </body>
