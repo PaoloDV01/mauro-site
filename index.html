@@ -1,0 +1,753 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOGISTICA — Trasporti e Spedizioni in Italia e in Europa</title>
+<meta name="description" content="Soluzioni di trasporto su misura per aziende. Trasporti nazionali e internazionali, logistica dedicata e consegne urgenti. Un unico interlocutore per ogni spedizione.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="LOGISTICA — Trasporti e Spedizioni in Italia e in Europa">
+<meta property="og:description" content="Soluzioni di trasporto su misura per aziende. Puntualità, tracciabilità e un interlocutore unico per ogni spedizione.">
+<meta property="og:image" content="https://placehold.co/1200x630/0E3B43/FAF7F2?text=LOGISTICA">
+<meta property="og:locale" content="it_IT">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LOGISTICA — Trasporti e Spedizioni in Italia e in Europa">
+<meta name="twitter:description" content="Soluzioni di trasporto su misura per aziende. Puntualità, tracciabilità e un interlocutore unico per ogni spedizione.">
+<meta name="twitter:image" content="https://placehold.co/1200x630/0E3B43/FAF7F2?text=LOGISTICA">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* === DESIGN TOKENS === */
+:root {
+  --primary: #0E3B43;
+  --primary-light: #1F5D66;
+  --cta: #C2410C;
+  --cta-hover: #9A3412;
+  --bg-base: #FAF7F2;
+  --bg-elevated: #FFFDF9;
+  --bg-floating: #FFFFFF;
+  --text: #1C1917;
+  --text-muted: #57534E;
+  --border: #E7E2D9;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  /* Spacing scale: 4 8 12 16 24 32 48 64 96 */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+  --space-2xl: 96px;
+}
+/* === BASE STYLES === */
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-base);
+  color: var(--text);
+  line-height: 1.7;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.btn-cta-primary {
+  background-color: var(--cta);
+}
+.btn-cta-primary:hover {
+  background-color: var(--cta-hover);
+}
+.form-field {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--text);
+  background-color: var(--bg-floating);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.form-field:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(31,93,102,0.15);
+}
+select.form-field {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2357534E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+.btn-cta-primary {
+  font-family: var(--font-body);
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+/* Scroll offset for sticky header */
+html {
+  scroll-padding-top: 72px;
+}
+/* Focus styles for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* === ANIMATIONS: SCROLL REVEAL === */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 650ms cubic-bezier(0.25, 1, 0.5, 1),
+              transform 650ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger sulle card servizi */
+#servizi .grid > *:nth-child(1) { transition-delay: 0ms; }
+#servizi .grid > *:nth-child(2) { transition-delay: 80ms; }
+#servizi .grid > *:nth-child(3) { transition-delay: 160ms; }
+#servizi .grid > *:nth-child(4) { transition-delay: 240ms; }
+
+/* === HERO GRADIENT BREATHING === */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: -15%;
+  background:
+    radial-gradient(ellipse 70% 60% at 30% 40%, rgba(31,93,102,0.5) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 45% at 70% 65%, rgba(194,65,12,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  animation: hero-breathe 28s ease-in-out infinite alternate;
+  will-change: transform;
+  z-index: 0;
+}
+@keyframes hero-breathe {
+  from { transform: translate(0%, 0%) scale(1); }
+  to   { transform: translate(3%, 2%) scale(1.06); }
+}
+
+/* === REDUCED MOTION OVERRIDE === */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  #hero::before {
+    animation: none;
+  }
+}
+
+/* === HOVER: BOTTONI CTA PRIMARI === */
+.btn-cta-primary {
+  transition: transform 200ms cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 200ms cubic-bezier(0.25, 1, 0.5, 1),
+              background-color 150ms ease-out;
+}
+.btn-cta-primary.btn-cta-primary:hover {
+  background-color: var(--cta-hover);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 16px rgba(194,65,12,0.30), 0 2px 6px rgba(194,65,12,0.20);
+}
+
+/* === HOVER: BOTTONE SECONDARIO "Scopri i servizi" hero === */
+#hero a[href="#servizi"] {
+  transition: background-color 200ms ease-out,
+              transform 200ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+#hero a[href="#servizi"]:hover {
+  background-color: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+}
+
+/* === HOVER: LINK "Scopri →" dentro le card servizi === */
+#servizi .flex-col a[href="#contact"] {
+  display: inline-block;
+  transition: transform 200ms cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 150ms ease-out;
+}
+#servizi .flex-col:hover a[href="#contact"] {
+  transform: translateX(4px);
+}
+
+/* === HOVER: PILL PAESI (coperture) === */
+#coperture span {
+  transition: background-color 150ms ease-out,
+              transform 150ms cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+#coperture span:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* === FOCUS FORM === */
+.form-field:focus {
+  border-color: var(--cta) !important;
+  box-shadow: 0 0 0 3px rgba(194,65,12,0.15) !important;
+}
+#contact div:focus-within > label {
+  color: var(--primary);
+  transition: color 200ms ease-out;
+}
+
+/* === ACTIVE STATE: bottoni === */
+.btn-cta-primary:active {
+  transform: translateY(0px) scale(0.97);
+  box-shadow: 0 1px 4px rgba(194,65,12,0.20);
+  transition: transform 80ms ease-out, box-shadow 80ms ease-out;
+}
+
+/* === NAV LINKS: underline animata === */
+header nav a:not(.btn-cta-primary) {
+  position: relative;
+  opacity: 1 !important;
+}
+header nav a:not(.btn-cta-primary)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background-color: rgba(255,255,255,0.70);
+  transition: width 200ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+header nav a:not(.btn-cta-primary):hover {
+  opacity: 0.85 !important;
+}
+header nav a:not(.btn-cta-primary):hover::after {
+  width: 100%;
+}
+
+/* === HEADER SCROLL ELEVATION === */
+header {
+  transition: box-shadow 250ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+header.scrolled {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.22), 0 1px 6px rgba(0,0,0,0.14);
+}
+
+/* === SHIMMER SUL CTA PRIMARIO === */
+.btn-cta-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.22) 50%,
+    transparent 100%
+  );
+  animation: btn-shimmer 5s ease-in-out 2s infinite;
+  pointer-events: none;
+}
+@keyframes btn-shimmer {
+  0%   { left: -100%; }
+  22%  { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* === STATS: numero grande con scale entrance === */
+#chi-siamo .grid > div > p:first-child {
+  opacity: 0;
+  transform: scale(0.82) translateY(10px);
+  transition: opacity 600ms cubic-bezier(0.25, 1, 0.5, 1),
+              transform 600ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+#chi-siamo.visible .grid > div > p:first-child {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+#chi-siamo .grid > div:nth-child(1) > p:first-child { transition-delay: 200ms; }
+#chi-siamo .grid > div:nth-child(2) > p:first-child { transition-delay: 360ms; }
+#chi-siamo .grid > div:nth-child(3) > p:first-child { transition-delay: 520ms; }
+
+/* === PILL PAESI: stagger pop in === */
+@keyframes pill-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.84) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+#coperture.visible .flex-wrap > span {
+  animation: pill-pop 380ms cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+#coperture.visible .flex-wrap > span:nth-child(1)  { animation-delay: 320ms; }
+#coperture.visible .flex-wrap > span:nth-child(2)  { animation-delay: 370ms; }
+#coperture.visible .flex-wrap > span:nth-child(3)  { animation-delay: 420ms; }
+#coperture.visible .flex-wrap > span:nth-child(4)  { animation-delay: 470ms; }
+#coperture.visible .flex-wrap > span:nth-child(5)  { animation-delay: 520ms; }
+#coperture.visible .flex-wrap > span:nth-child(6)  { animation-delay: 570ms; }
+#coperture.visible .flex-wrap > span:nth-child(7)  { animation-delay: 620ms; }
+#coperture.visible .flex-wrap > span:nth-child(8)  { animation-delay: 670ms; }
+#coperture.visible .flex-wrap > span:nth-child(9)  { animation-delay: 720ms; }
+#coperture.visible .flex-wrap > span:nth-child(10) { animation-delay: 770ms; }
+#coperture.visible .flex-wrap > span:nth-child(11) { animation-delay: 820ms; }
+#coperture.visible .flex-wrap > span:nth-child(12) { animation-delay: 870ms; }
+
+/* === REDUCED MOTION: hover transforms + nuove animazioni === */
+@media (prefers-reduced-motion: reduce) {
+  .btn-cta-primary.btn-cta-primary:hover,
+  .btn-cta-primary:active,
+  #hero a[href="#servizi"]:hover,
+  #coperture span:hover {
+    transform: none !important;
+  }
+  #servizi .flex-col:hover a[href="#contact"] {
+    transform: none;
+  }
+  header nav a:not(.btn-cta-primary)::after {
+    transition: none;
+  }
+  .btn-cta-primary::after {
+    animation: none;
+  }
+  #chi-siamo .grid > div > p:first-child {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  #coperture.visible .flex-wrap > span {
+    animation: none;
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- SVG noise filter -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" mode="overlay" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- SECTION: header -->
+<header class="sticky top-0 z-50" style="background-color: var(--primary); padding-top: 16px; padding-bottom: 16px;">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+    <!-- Logo SVG inline -->
+    <a href="#" aria-label="LOGISTICA — Home" class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" fill="none" style="height: 32px; width: auto; filter: brightness(0) invert(1);">
+        <g stroke="#0E3B43" stroke-width="3" stroke-linecap="round">
+          <path d="M6 12 L30 24"/>
+          <path d="M6 24 L30 24"/>
+          <path d="M6 36 L30 24"/>
+          <circle cx="32" cy="24" r="3" fill="#0E3B43" stroke="none"/>
+        </g>
+        <text x="48" y="31" font-family="Fraunces, Georgia, serif" font-size="22" font-weight="700" fill="#0E3B43" letter-spacing="1.5">LOGISTICA</text>
+      </svg>
+    </a>
+
+    <!-- Desktop nav links -->
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#servizi" class="text-white opacity-100 hover:opacity-75 transition-[opacity] duration-150 ease-out text-sm font-medium" style="font-family: var(--font-body);">Servizi</a>
+      <a href="#coperture" class="text-white opacity-100 hover:opacity-75 transition-[opacity] duration-150 ease-out text-sm font-medium" style="font-family: var(--font-body);">Coperture</a>
+      <a href="#chi-siamo" class="text-white opacity-100 hover:opacity-75 transition-[opacity] duration-150 ease-out text-sm font-medium" style="font-family: var(--font-body);">Chi siamo</a>
+      <a href="#contact" class="btn-cta-primary text-white font-medium text-sm transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5" style="border-radius: 4px; padding: 8px 20px;">Richiedi un preventivo</a>
+    </nav>
+
+    <!-- Mobile: small CTA only -->
+    <a href="#contact" class="md:hidden text-white font-medium text-xs transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5" style="background-color: var(--cta); border-radius: 4px; padding: 6px 14px;">Preventivo</a>
+  </div>
+</header>
+
+<!-- SECTION: hero -->
+<section id="hero" class="relative overflow-hidden" style="background: radial-gradient(ellipse 80% 60% at 20% 30%, #1F5D66 0%, #0E3B43 60%), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(194,65,12,0.15) 0%, transparent 70%); min-height: auto;">
+  <!-- Noise overlay -->
+  <div class="absolute inset-0 pointer-events-none" style="filter: url(#noise); opacity: 0.04; background: white;" aria-hidden="true"></div>
+
+  <div
+    class="relative z-10 max-w-7xl mx-auto px-4 py-24 lg:min-h-screen lg:flex lg:items-center lg:gap-12"
+    style="padding-top: 96px; padding-bottom: 96px;"
+  >
+    <!-- Text column -->
+    <div class="lg:w-[55%] mb-12 lg:mb-0">
+      <p class="uppercase text-sm font-medium mb-6" style="font-family: var(--font-body); letter-spacing: 0.12em; color: var(--cta);">Trasporti · Logistica · Spedizioni</p>
+      <h1 class="text-white mb-6" style="font-family: var(--font-display); font-weight: 800; font-size: clamp(2.5rem, 5vw, 4rem);">Muoviamo la tua merce in Italia e in Europa.</h1>
+      <p class="mb-10" style="font-family: var(--font-body); font-weight: 400; max-width: 52ch; color: rgba(255,255,255,0.80);">Soluzioni di trasporto su misura per aziende. Puntualità, tracciabilità e un interlocutore unico per ogni spedizione.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#contact" class="btn-cta-primary inline-block text-white font-medium text-base transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5" style="border-radius: 4px; padding: 12px 28px;">Richiedi un preventivo</a>
+        <a href="#servizi" class="inline-block text-white font-medium text-base transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5" style="border: 1px solid white; border-radius: 4px; padding: 12px 28px;">Scopri i servizi</a>
+      </div>
+    </div>
+
+    <!-- Image column -->
+    <div class="lg:w-[45%]">
+      <img
+        src="https://placehold.co/600x480/1F5D66/FAF7F2?text=Foto+flotta"
+        alt="Flotta di trasporto"
+        class="w-full rounded-lg object-cover h-60 lg:h-auto"
+        style="box-shadow: 0 24px 64px rgba(0,0,0,0.35), 0 4px 16px rgba(0,0,0,0.2);"
+        loading="eager"
+      >
+    </div>
+  </div>
+</section>
+
+<section id="servizi" class="reveal py-16 lg:py-24" style="background-color: var(--bg-base);">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <!-- Intestazione sezione -->
+    <div style="max-width: 42ch; margin-bottom: 64px;">
+      <p class="uppercase font-medium" style="font-family: var(--font-body); font-size: 12px; letter-spacing: 0.10em; color: var(--cta);">I nostri servizi</p>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.75rem); color: var(--primary); letter-spacing: -0.03em; margin-top: 12px;">Soluzioni su misura per ogni esigenza di trasporto</h2>
+    </div>
+
+    <!-- Griglia card -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- CARD 1 — Trasporti nazionali -->
+      <div class="reveal flex flex-col" style="background-color: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; box-shadow: 0 2px 8px rgba(14,59,67,0.06), 0 8px 32px rgba(14,59,67,0.04); transition: transform 200ms ease-out, box-shadow 200ms ease-out;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(14,59,67,0.12), 0 24px 48px rgba(14,59,67,0.08)';" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 8px rgba(14,59,67,0.06), 0 8px 32px rgba(14,59,67,0.04)';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+          <path d="M1 3h15v13H1z"/>
+          <path d="M16 8h4l3 3v5h-7V8z"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/>
+          <circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--primary); margin-top: 20px;">Trasporti nazionali</h3>
+        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 10px;">Consegne in tutta Italia con flotta propria. Gestione completa dalla presa in carico alla consegna.</p>
+        <div style="margin-top: auto; padding-top: 24px;">
+          <a href="#contact" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--cta); transition: opacity 150ms ease-out;" onmouseenter="this.style.opacity='0.75';" onmouseleave="this.style.opacity='1';">Scopri →</a>
+        </div>
+      </div>
+
+      <!-- CARD 2 — Trasporti internazionali -->
+      <div class="reveal flex flex-col" style="background-color: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; box-shadow: 0 2px 8px rgba(14,59,67,0.06), 0 8px 32px rgba(14,59,67,0.04); transition: transform 200ms ease-out, box-shadow 200ms ease-out;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(14,59,67,0.12), 0 24px 48px rgba(14,59,67,0.08)';" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 8px rgba(14,59,67,0.06), 0 8px 32px rgba(14,59,67,0.04)';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M2 12h20"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--primary); margin-top: 20px;">Trasporti internazionali</h3>
+        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 10px;">Spedizioni verso i principali paesi europei. Documentazione doganale e tracciabilità in tempo reale.</p>
+        <div style="margin-top: auto; padding-top: 24px;">
+          <a href="#contact" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--cta); transition: opacity 150ms ease-out;" onmouseenter="this.style.opacity='0.75';" onmouseleave="this.style.opacity='1';">Scopri →</a>
+        </div>
+      </div>
+
+      <!-- CARD 3 — Logistica dedicata -->
+      <div class="reveal flex flex-col" style="background-color: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; box-shadow: 0 2px 8px rgba(14,59,67,0.06), 0 8px 32px rgba(14,59,67,0.04); transition: transform 200ms ease-out, box-shadow 200ms ease-out;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(14,59,67,0.12), 0 24px 48px rgba(14,59,67,0.08)';" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 8px rgba(14,59,67,0.06), 0 8px 32px rgba(14,59,67,0.04)';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+          <path d="M16.5 9.4 7.55 4.24"/>
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          <path d="M3.27 6.96 12 12.01l8.73-5.05"/>
+          <path d="M12 22.08V12"/>
+        </svg>
+        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--primary); margin-top: 20px;">Logistica dedicata</h3>
+        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 10px;">Stoccaggio, picking e gestione magazzino. Soluzioni flessibili adattate al volume della tua azienda.</p>
+        <div style="margin-top: auto; padding-top: 24px;">
+          <a href="#contact" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--cta); transition: opacity 150ms ease-out;" onmouseenter="this.style.opacity='0.75';" onmouseleave="this.style.opacity='1';">Scopri →</a>
+        </div>
+      </div>
+
+      <!-- CARD 4 — Consegne urgenti -->
+      <div class="reveal flex flex-col" style="background-color: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 32px 28px; box-shadow: 0 2px 8px rgba(14,59,67,0.06), 0 8px 32px rgba(14,59,67,0.04); transition: transform 200ms ease-out, box-shadow 200ms ease-out;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(14,59,67,0.12), 0 24px 48px rgba(14,59,67,0.08)';" onmouseleave="this.style.transform='translateY(0)';this.style.boxShadow='0 2px 8px rgba(14,59,67,0.06), 0 8px 32px rgba(14,59,67,0.04)';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+        </svg>
+        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--primary); margin-top: 20px;">Consegne urgenti</h3>
+        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 10px;">Servizio espresso per spedizioni prioritarie. Consegna in 24/48 ore su tutto il territorio nazionale.</p>
+        <div style="margin-top: auto; padding-top: 24px;">
+          <a href="#contact" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--cta); transition: opacity 150ms ease-out;" onmouseenter="this.style.opacity='0.75';" onmouseleave="this.style.opacity='1';">Scopri →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: coverage -->
+<section id="coperture" class="reveal py-16 lg:py-24" style="background-color: var(--primary);">
+  <div class="max-w-7xl mx-auto px-4 lg:flex lg:gap-16 lg:items-start">
+
+    <!-- Colonna sinistra: testo -->
+    <div class="lg:w-[40%] mb-12 lg:mb-0">
+      <p class="uppercase font-medium" style="font-family: var(--font-body); font-size: 12px; letter-spacing: 0.10em; color: var(--cta);">DOVE OPERIAMO</p>
+      <h2 class="text-white" style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.75rem); letter-spacing: -0.03em; margin-top: 12px;">Italia e Europa, con un unico punto di riferimento</h2>
+      <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-top: 16px; max-width: 36ch;">Gestiamo spedizioni in tutta Italia e verso i principali mercati europei. Un solo interlocutore per ogni destinazione.</p>
+
+      <!-- Dati sintetici placeholder -->
+      <div style="margin-top: 32px;">
+        <div>
+          <p class="text-white" style="font-family: var(--font-display); font-weight: 600; font-size: 1.5rem;">XX paesi serviti</p>
+          <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.8125rem; color: rgba(255,255,255,0.6);">in Europa</p>
+        </div>
+        <div style="margin-top: 16px;">
+          <p class="text-white" style="font-family: var(--font-display); font-weight: 600; font-size: 1.5rem;">+ XX partner logistici</p>
+          <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.8125rem; color: rgba(255,255,255,0.6);">rete certificata</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colonna destra: griglia paesi -->
+    <div class="lg:w-[60%]">
+      <div class="flex flex-wrap gap-3">
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇮🇹 Italia</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇩🇪 Germania</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇫🇷 Francia</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇪🇸 Spagna</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇵🇱 Polonia</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇳🇱 Paesi Bassi</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇧🇪 Belgio</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇦🇹 Austria</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇨🇿 Repubblica Ceca</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇨🇭 Svizzera</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇵🇹 Portogallo</span>
+        <span class="inline-block text-white" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; padding: 10px 18px; border: 1px solid rgba(255,255,255,0.20); border-radius: 999px; background: rgba(255,255,255,0.07); cursor: default; transition: background-color 150ms ease-out;" onmouseenter="this.style.backgroundColor='rgba(255,255,255,0.14)'" onmouseleave="this.style.backgroundColor='rgba(255,255,255,0.07)'">🇸🇰 Slovacchia</span>
+      </div>
+      <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.8125rem; color: rgba(255,255,255,0.50); margin-top: 24px;">* Su richiesta gestiamo spedizioni verso destinazioni extra-europee tramite partner selezionati.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="chi-siamo" class="reveal py-16 lg:py-24" style="background-color: var(--bg-base);">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <!-- Intestazione sezione -->
+    <div style="margin-bottom: 64px;">
+      <p class="uppercase font-medium" style="font-family: var(--font-body); font-size: 12px; letter-spacing: 0.10em; color: var(--cta);">PERCHÉ SCEGLIERCI</p>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.75rem); color: var(--primary); letter-spacing: -0.03em; margin-top: 12px;">Numeri che parlano per noi</h2>
+    </div>
+
+    <!-- Tre blocchi numerici -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
+
+      <!-- Blocco 1 — Anno di fondazione -->
+      <div class="lg:border-r lg:pr-12" style="border-color: var(--border);">
+        <p style="font-family: var(--font-display); font-weight: 800; font-size: clamp(3.5rem, 6vw, 5rem); color: var(--primary); letter-spacing: -0.04em; line-height: 1.0;">[ANNO]</p>
+        <p style="font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--primary); margin-top: 12px;">Anno di fondazione</p>
+        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 8px; max-width: 28ch;">Anni di esperienza nel settore dei trasporti B2B.</p>
+      </div>
+
+      <!-- Blocco 2 — Aziende clienti -->
+      <div class="lg:border-r lg:pl-12 lg:pr-12" style="border-color: var(--border);">
+        <p style="font-family: var(--font-display); font-weight: 800; font-size: clamp(3.5rem, 6vw, 5rem); color: var(--primary); letter-spacing: -0.04em; line-height: 1.0;">XX+</p>
+        <p style="font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--primary); margin-top: 12px;">Aziende clienti</p>
+        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 8px; max-width: 28ch;">Imprese italiane ed europee che si affidano a noi ogni anno.</p>
+      </div>
+
+      <!-- Blocco 3 — Puntualità -->
+      <div class="lg:pl-12">
+        <p style="font-family: var(--font-display); font-weight: 800; font-size: clamp(3.5rem, 6vw, 5rem); color: var(--primary); letter-spacing: -0.04em; line-height: 1.0;">XX%</p>
+        <p style="font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; color: var(--primary); margin-top: 12px;">Puntualità nelle consegne</p>
+        <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.7; margin-top: 8px; max-width: 28ch;">Il nostro impegno è arrivare quando promesso.</p>
+      </div>
+
+    </div>
+
+    <!-- Separatore orizzontale -->
+    <hr style="border: none; border-top: 1px solid var(--border); margin-top: 64px;">
+
+    <!-- Riga CTA finale -->
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between" style="margin-top: 48px;">
+      <p style="font-family: var(--font-body); font-weight: 400; font-size: 1rem; color: var(--text-muted); max-width: 52ch;">Vuoi sapere se siamo il partner giusto per la tua azienda? Raccontaci le tue esigenze senza impegno.</p>
+      <a href="#contact" class="btn-cta-primary inline-block text-white font-medium transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5 mt-6 lg:mt-0" style="border-radius: 4px; padding: 12px 28px;">Richiedi un preventivo</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION: contact -->
+<section id="contact" class="reveal py-16 lg:py-24" style="background-color: var(--bg-elevated);">
+  <div class="max-w-4xl mx-auto px-4">
+
+    <!-- Intestazione centrata -->
+    <div style="text-align: center; margin-bottom: 48px;">
+      <p class="uppercase font-medium" style="font-family: var(--font-body); font-size: 12px; letter-spacing: 0.10em; color: var(--cta);">CONTATTACI</p>
+      <h2 style="font-family: var(--font-display); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.5rem); color: var(--primary); letter-spacing: -0.03em; margin-top: 12px; text-align: center;">Richiedi un preventivo</h2>
+      <p style="font-family: var(--font-body); font-weight: 400; font-size: 1rem; color: var(--text-muted); text-align: center; margin-top: 12px; max-width: 48ch; margin-left: auto; margin-right: auto;">Compila il modulo. Ti risponderemo entro un giorno lavorativo. Nessun impegno.</p>
+    </div>
+
+    <!-- Form -->
+    <form action="#" method="POST">
+
+      <!-- Nome e cognome + Azienda -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom: 16px;">
+        <div>
+          <label style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--text); margin-bottom: 6px; display: block;">Nome e cognome</label>
+          <input type="text" required class="form-field" placeholder="">
+        </div>
+        <div>
+          <label style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--text); margin-bottom: 6px; display: block;">Azienda</label>
+          <input type="text" required class="form-field" placeholder="">
+        </div>
+      </div>
+
+      <!-- Email + Telefono -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom: 16px;">
+        <div>
+          <label style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--text); margin-bottom: 6px; display: block;">Email</label>
+          <input type="email" required class="form-field" placeholder="">
+        </div>
+        <div>
+          <label style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--text); margin-bottom: 6px; display: block;">Telefono</label>
+          <input type="tel" class="form-field" placeholder="">
+        </div>
+      </div>
+
+      <!-- Select servizio -->
+      <div style="margin-bottom: 16px;">
+        <label style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--text); margin-bottom: 6px; display: block;">Servizio di interesse</label>
+        <select required class="form-field">
+          <option value="" disabled selected>Seleziona un servizio</option>
+          <option>Trasporti nazionali</option>
+          <option>Trasporti internazionali</option>
+          <option>Logistica dedicata</option>
+          <option>Consegne urgenti</option>
+          <option>Altro</option>
+        </select>
+      </div>
+
+      <!-- Textarea -->
+      <div style="margin-bottom: 16px;">
+        <label style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem; color: var(--text); margin-bottom: 6px; display: block;">Descrivi la tua esigenza</label>
+        <textarea rows="4" class="form-field" placeholder=""></textarea>
+      </div>
+
+      <!-- Avviso demo -->
+      <p style="font-family: var(--font-body); font-weight: 400; font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 24px; text-align: center;">⚠️ Questo modulo è dimostrativo e non invia dati. Il form verrà collegato al backend nella versione definitiva.</p>
+
+      <!-- Submit -->
+      <button type="submit" class="btn-cta-primary w-full text-white transition-[transform,opacity] duration-200 ease-out hover:-translate-y-0.5" style="border-radius: 4px; padding: 14px 28px; font-weight: 600;">Invia richiesta</button>
+
+    </form>
+
+  </div>
+</section>
+
+<!-- SECTION: footer -->
+<footer style="background-color: var(--primary); padding-top: 48px; padding-bottom: 48px;">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <!-- Riga 1: Logo + Nav -->
+    <div class="flex items-center justify-between" style="padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.12);">
+      <!-- Logo bianco -->
+      <a href="#" aria-label="LOGISTICA — Home" class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" fill="none" style="height: 28px; width: auto; filter: brightness(0) invert(1);">
+          <g stroke="#0E3B43" stroke-width="3" stroke-linecap="round">
+            <path d="M6 12 L30 24"/>
+            <path d="M6 24 L30 24"/>
+            <path d="M6 36 L30 24"/>
+            <circle cx="32" cy="24" r="3" fill="#0E3B43" stroke="none"/>
+          </g>
+          <text x="48" y="31" font-family="Fraunces, Georgia, serif" font-size="22" font-weight="700" fill="#0E3B43" letter-spacing="1.5">LOGISTICA</text>
+        </svg>
+      </a>
+      <!-- Link nav + social -->
+      <div class="hidden md:flex items-center" style="gap: 32px;">
+        <nav class="flex items-center" style="gap: 24px;">
+          <a href="#servizi" class="text-white transition-[opacity] duration-150 ease-out hover:opacity-65" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem;">Servizi</a>
+          <a href="#coperture" class="text-white transition-[opacity] duration-150 ease-out hover:opacity-65" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem;">Coperture</a>
+          <a href="#contact" class="text-white transition-[opacity] duration-150 ease-out hover:opacity-65" style="font-family: var(--font-body); font-weight: 500; font-size: 0.875rem;">Contatti</a>
+        </nav>
+        <!-- Social icons -->
+        <div class="flex items-center" style="gap: 16px;">
+          <!-- LinkedIn -->
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Seguici su LinkedIn" class="transition-[opacity,transform] duration-150 ease-out hover:opacity-80 hover:-translate-y-0.5" style="color: rgba(255,255,255,0.60);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Seguici su Facebook" class="transition-[opacity,transform] duration-150 ease-out hover:opacity-80 hover:-translate-y-0.5" style="color: rgba(255,255,255,0.60);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Riga 2: Copyright + Policy -->
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between" style="padding-top: 24px;">
+      <p style="color: rgba(255,255,255,0.50); font-family: var(--font-body); font-weight: 400; font-size: 0.8125rem;">© [ANNO] LOGISTICA. Tutti i diritti riservati.</p>
+      <div class="flex items-center mt-3 lg:mt-0" style="gap: 16px;">
+        <a href="#" class="transition-[opacity] duration-150 ease-out hover:opacity-80" style="color: rgba(255,255,255,0.50); font-family: var(--font-body); font-weight: 400; font-size: 0.8125rem;">Privacy Policy</a>
+        <a href="#" class="transition-[opacity] duration-150 ease-out hover:opacity-80" style="color: rgba(255,255,255,0.50); font-family: var(--font-body); font-weight: 400; font-size: 0.8125rem;">Cookie Policy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+(function() {
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  if (reducedMotion) {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      observer.observe(el);
+    });
+  }
+})();
+
+// Header scroll elevation
+(function() {
+  var header = document.querySelector('header');
+  if (!header) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 8) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
