@@ -339,7 +339,9 @@ header.scrolled {
 .hero-animated-wrapper {
   display: inline-block;
   position: relative;
-  overflow: hidden;
+  /* clip-path clips vertically (hides entering/exiting words) but expands
+     horizontally so long words like "tracciabili" are never cut off */
+  clip-path: inset(0 -999px);
   height: 1.15em; /* matches h1 line-height */
   vertical-align: bottom;
   min-width: 6ch; /* evita collasso quando le parole sono absolute */
