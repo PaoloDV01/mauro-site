@@ -337,12 +337,19 @@ header.scrolled {
 
 /* === HERO: ROTATING WORD === */
 .hero-animated-wrapper {
-  display: block;
+  display: inline-block;
+  position: relative;
   overflow: hidden;
   height: 1.15em; /* matches h1 line-height */
+  vertical-align: bottom;
+  min-width: 6ch; /* evita collasso quando le parole sono absolute */
 }
 .hero-word {
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   transform: translateY(110%);
   opacity: 0;
   transition: transform 420ms cubic-bezier(0.25, 1, 0.5, 1),
