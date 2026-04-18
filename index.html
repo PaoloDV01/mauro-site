@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/cinematic-cta.css">
 </head>
 <body>
 
@@ -445,84 +446,98 @@
     </div>
   </section>
 
-  <!-- CTA FINALE -->
-  <section class="cta-band" aria-labelledby="cta-h2">
-    <div class="container" style="text-align:center;">
-      <div class="reveal">
-        <h2 id="cta-h2">Hai una spedizione da gestire?</h2>
-        <p>Scriveteci o chiamateci direttamente.<br>Risposta entro 24 ore lavorative, senza impegno.</p>
-        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:20px;">
-          <a href="/contatti/" class="btn btn-primary-white btn-lg">Richiedi un preventivo</a>
-          <a href="tel:[TEL]" class="btn btn-outline-white btn-lg">Chiamaci — <span data-site-tel>[TEL]</span></a>
-        </div>
-        <p class="cta-band-sub">Il primo contatto è sempre con una persona. Nessun form automatico, nessuna risposta preconfezionata.</p>
-        <div style="display:flex; justify-content:center; gap:12px; margin-top:24px; flex-wrap:wrap;">
-          <span class="badge badge-dark">ATP</span>
-          <span class="badge badge-dark">ADR</span>
-          <span class="badge badge-dark">27 anni di esperienza</span>
-          <span class="badge badge-dark">Risposta in 24 ore</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<!-- FOOTER -->
-<footer id="site-footer" aria-label="Footer">
-  <div class="container">
-    <div class="footer-grid">
+<!-- CINEMATIC CTA — homepage closing section -->
+<div class="cinematic-wrapper" aria-label="Sezione finale — Contatto">
 
-      <div class="footer-brand">
-        <a href="/" class="site-logo" aria-label="Trasporti Leonardo Group — Homepage">
-          <span class="site-logo__mark">TLG</span>
-          <span class="site-logo__sub">Trasporti Leonardo Group</span>
-        </a>
-        <p>Trasporti professionali su tratte nazionali. Frigorifero ATP, pallet e misto. Dal Nord al Centro Italia.</p>
-        <div style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
-          <a href="tel:[TEL]" style="font-size:0.9375rem; color:rgba(255,255,255,0.70); font-weight:600; text-decoration:none;" data-site-tel>[TEL]</a>
-          <a href="mailto:[EMAIL]" style="font-size:0.9375rem; color:rgba(255,255,255,0.50); text-decoration:none;" data-site-email>[EMAIL]</a>
+  <section class="cinematic-cta" aria-labelledby="cinematic-h2">
+
+    <!-- Background grid -->
+    <div class="cinematic-grid" aria-hidden="true"></div>
+
+    <!-- Aurora glow -->
+    <div class="cinematic-aurora" aria-hidden="true"></div>
+
+    <!-- Giant ghost text -->
+    <div class="cinematic-bg-text" aria-hidden="true">TLG</div>
+
+    <!-- Marquee strip -->
+    <div class="cinematic-marquee" aria-hidden="true">
+      <div class="cinematic-marquee__track">
+        <div class="cinematic-marquee__inner">
+          <span>Trasporto Frigorifero ATP</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Trasporto Pallet</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Trasporto Misto ADR</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Milano — Pescara</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Milano — Roma</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Milano — Firenze</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Pescara — Bologna</span><span class="cinematic-marquee__dot">◆</span>
+          <span>27 anni di esperienza</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Certificazione ATP</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Abilitazione ADR</span><span class="cinematic-marquee__dot">◆</span>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="cinematic-marquee__inner" aria-hidden="true">
+          <span>Trasporto Frigorifero ATP</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Trasporto Pallet</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Trasporto Misto ADR</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Milano — Pescara</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Milano — Roma</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Milano — Firenze</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Pescara — Bologna</span><span class="cinematic-marquee__dot">◆</span>
+          <span>27 anni di esperienza</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Certificazione ATP</span><span class="cinematic-marquee__dot">◆</span>
+          <span>Abilitazione ADR</span><span class="cinematic-marquee__dot">◆</span>
         </div>
       </div>
-
-      <div class="footer-col">
-        <h4>Servizi</h4>
-        <a href="/servizi/trasporto-frigorifero/">Trasporto Frigorifero ATP</a>
-        <a href="/servizi/trasporto-pallet/">Trasporto Pallet</a>
-        <a href="/servizi/trasporto-misto/">Trasporto Misto e ADR</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Zone servite</h4>
-        <a href="/zone-servite/">Milano · Pescara</a>
-        <a href="/zone-servite/">Milano · Roma</a>
-        <a href="/zone-servite/">Milano · Firenze</a>
-        <a href="/zone-servite/">Pescara · Bologna</a>
-        <a href="/zone-servite/">Tutte le tratte</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Azienda</h4>
-        <a href="/chi-siamo/">Chi siamo</a>
-        <a href="/contatti/">Contatti</a>
-        <a href="/contatti/">Richiedi un preventivo</a>
-      </div>
-
     </div>
 
-    <div class="footer-bottom">
-      <p class="footer-copy">
-        © 2026 Trasporti Leonardo Group — <span data-site-piva>[P.IVA]</span>
-      </p>
-      <div class="footer-links">
+    <!-- Main body -->
+    <div class="cinematic-body">
+      <p class="cinematic-eyebrow">Trasporti Leonardo Group</p>
+      <h2 class="cinematic-heading" id="cinematic-h2">Hai una tratta<br>da organizzare?</h2>
+      <p class="cinematic-sub">Frigorifero, pallet o misto ADR — rispondiamo entro 24 ore lavorative.<br>Il primo contatto è sempre con una persona.</p>
+
+      <div class="cinematic-actions">
+        <a href="/contatti/" class="cinematic-pill cinematic-pill--primary" data-magnetic>
+          Richiedi un preventivo
+        </a>
+        <a href="tel:[TEL]" class="cinematic-pill cinematic-pill--secondary" data-magnetic data-site-tel>
+          Chiama ora
+        </a>
+      </div>
+
+      <nav class="cinematic-links" aria-label="Link secondari">
+        <a href="/servizi/trasporto-frigorifero/">Frigorifero ATP</a>
+        <a href="/servizi/trasporto-pallet/">Trasporto Pallet</a>
+        <a href="/servizi/trasporto-misto/">Trasporto Misto ADR</a>
+        <a href="/zone-servite/">Zone servite</a>
+        <a href="/chi-siamo/">Chi siamo</a>
+      </nav>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="cinematic-bottom">
+      <p class="cinematic-copyright">© 2026 Trasporti Leonardo Group — P.IVA <span data-site-piva>[P.IVA]</span></p>
+      <div class="cinematic-bottom-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Cookie Policy</a>
+        <a href="/contatti/">Contatti</a>
       </div>
+      <button class="cinematic-back-top" id="cinematic-back-top" aria-label="Torna in cima">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="4 10 8 6 12 10"/>
+        </svg>
+      </button>
     </div>
-  </div>
-</footer>
+
+  </section>
+
+</div><!-- /.cinematic-wrapper -->
 
 <script src="/site-config.js"></script>
 <script src="/assets/script.js"></script>
+<script src="/assets/cinematic-cta.js"></script>
 </body>
 </html>
