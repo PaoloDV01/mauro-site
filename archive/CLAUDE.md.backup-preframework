@@ -21,80 +21,6 @@ No exceptions. Design tokens, component patterns and anti-generic rules live the
 
 ---
 
-## 1.5. Knowledge Infrastructure
-
-This section documents the persistent knowledge layer built around the project. Read it before reaching for Glob or Grep.
-
-### Knowledge Graph (graphify)
-
-The project has a living knowledge graph in `graphify-out/`:
-
-| File | Purpose |
-|------|---------|
-| `graphify-out/GRAPH_REPORT.md` | Human-readable report — check here first before searching raw files |
-| `graphify-out/graph.json` | Machine-readable graph (GraphRAG-compatible) |
-| `graphify-out/graph.html` | Interactive visualization, open in any browser |
-
-**What it's for:** The graph maps relationships between concepts, files, decisions, and rationale across all project documents. It surfaces connections that are hard to find by reading files individually.
-
-**When to re-run:**
-```
-/graphify . --update
-```
-Re-run after every 3–5 new or significantly modified files. Cost is low (incremental extraction only re-processes changed files). If in doubt, run it — do not let the graph go stale.
-
-**PreToolUse hook:** A hook in `.claude/settings.json` fires before every `Glob`/`Grep` and reminds to consult the graph first. **Do not disable this hook.** It exists to prevent redundant file scanning when the graph already has the answer.
-
-**`.graphifyignore`:** The file `.graphifyignore` at the repo root controls what graphify excludes from extraction. Binary files (`.docx`, `.xlsx`, `.pptx`, `.eml`) and `node_modules/` are already excluded. If new binary file types are added to the project, add them to `.graphifyignore` before the next `/graphify` run.
-
----
-
-### Obsidian Vault — External Project Memory
-
-Paolo maintains a personal knowledge vault at:
-```
-C:\Users\paolo\claude-vault\claude-vault\
-```
-
-The hub page for this project lives at:
-```
-C:\Users\paolo\claude-vault\claude-vault\wiki\progetti\mauro-site.md
-```
-
-**Role of the hub page:** It tracks project state, strategic decisions, and links to related projects and concepts in the vault. It is the canonical "what's happening on this project" document outside the repo.
-
-**When to update it:** When strategic decisions are made — a new phase approved, pricing agreed, brand identity locked, major architecture change. Not for every code edit.
-
-**Suggestions:** If, while working, Claude Code identifies information that is clearly strategic or decision-level (not just implementation detail), it should suggest an update to the hub page. Paolo decides whether to apply it.
-
----
-
-### Meeting Minutes & Correspondence (Proposition/)
-
-All structured documents live inside `Proposition/` with this layout:
-
-```
-Proposition/
-  Riunioni/           — meeting minutes as Markdown (readable by Claude and graphify)
-  Riunioni/originali/ — original .docx files (excluded from graphify)
-  Email/              — key correspondence as Markdown
-  Email/originali/    — original .eml or .pdf files (excluded from graphify)
-```
-
-**Naming convention:** `YYYY-MM-DD-descrizione-breve.md`
-
-**Workflow:** Paolo manually extracts tasks and decisions from meeting minutes and passes them as prompts. This is intentional — do not automate the conversion. The manual step preserves editorial control.
-
-**Binary originals** (`.docx`, `.xlsx`, `.pptx`, `.eml`) must always go into an `originali/` subfolder, never into a project root or parent directory. They are listed in `.graphifyignore`.
-
----
-
-### Caveman Plugin — Scope Note
-
-The `caveman` response-compression plugin is active **by default only in the `claude-vault` vault**, not in this project. The default here is normal Claude responses. To activate it for a session in this project, use `/caveman full` explicitly. It does not persist across sessions unless invoked.
-
----
-
 ## 2. Hybrid Workflow — Claude Code as Architect
 
 Claude Code is the **ARCHITECT**. It does **not** write most of the code itself.
@@ -190,13 +116,10 @@ Every UI change must be verified visually.
 
 ## 7. Brand Assets
 
-- **Brand assets vivono in `..\mauro-shared\brand_assets\`** — fuori da questo progetto, in uno shared con mauro-seo, mauro-marketing, mauro-ads.
-- Path relativo dal sito: `../mauro-shared/brand_assets/`
-- Path assoluto: `C:\Users\paolo\dev\mauro\mauro-shared\brand_assets\`
-- Sempre controllare lì prima di inventare colori, font o logo.
-- Se assets esistono → usarli verbatim.
-- Se la cartella è vuota o un asset manca → usa placeholder neutri e flaggalo a Paolo, non improvvisare identità di brand.
-- **Banditi di default:** palette Tailwind stock `indigo`, `blue`, `slate` come primari. Sanno di "AI template". Usa hex custom definiti nei design tokens in testa al `<style>`.
+- **Always check `./brand_assets/` first** before inventing any color, font or logo.
+- If assets exist → use them verbatim.
+- If empty → use neutral placeholders and flag it to Paolo, do **not** improvise a brand identity.
+- **Banned by default:** Tailwind's stock `indigo`, `blue`, `slate` palettes as primary. They scream "AI template". Use custom hex values defined in a small design-tokens block at the top of `<style>`.
 
 ---
 
@@ -240,6 +163,3 @@ These are the tells of lazy AI output. Avoid all of them.
 11. Never use stock Tailwind `indigo`/`blue` as primary brand color.
 12. Never add a build step (webpack, vite, etc.) — stay on CDN Tailwind + single HTML.
 13. Never write copy in English for the live site — it's Italian.
-14. Never commit `graphify-out/` to git — it's generated output, not source.
-15. Never delete or modify `.graphifyignore` without discussing with Paolo first.
-16. Never place binary meeting/correspondence files (`.docx`, `.xlsx`, `.pptx`, `.eml`) anywhere except `Proposition/*/originali/`.

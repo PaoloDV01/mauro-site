@@ -2,3 +2,12 @@ node_modules/
 temporary screenshots/
 .DS_Store
 *.log
+
+# Generated output — never commit
+graphify-out/
+
+# Local Claude Code session data
+.claude/
+
+# Confidential business documents
+Proposition/

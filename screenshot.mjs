@@ -42,6 +42,11 @@ const browser = await puppeteer.launch({
 try {
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+  // Force all reveal elements visible so full-page screenshots show all content
+  await page.evaluate(() => {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  });
+  await new Promise(r => setTimeout(r, 100));
   await page.screenshot({ path: outPath, fullPage: true });
   console.log(`Saved: ${outPath}`);
 } catch (e) {

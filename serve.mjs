@@ -44,17 +44,24 @@ const server = http.createServer((req, res) => {
     }
 
     fs.stat(filePath, (err, stat) => {
-      if (err || !stat.isFile()) {
-        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-        return res.end('404 Not Found: ' + urlPath);
-      }
-      const ext = path.extname(filePath).toLowerCase();
-      const type = MIME[ext] || 'application/octet-stream';
-      res.writeHead(200, {
-        'Content-Type': type,
-        'Cache-Control': 'no-store', // always fresh during dev
+      // If directory, try index.html inside it
+      const resolved = (!err && stat.isDirectory())
+        ? path.join(filePath, 'index.html')
+        : (err ? path.join(filePath, 'index.html') : filePath);
+
+      fs.stat(resolved, (err2, stat2) => {
+        if (err2 || !stat2.isFile()) {
+          res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+          return res.end('404 Not Found: ' + urlPath);
+        }
+        const ext = path.extname(resolved).toLowerCase();
+        const type = MIME[ext] || 'application/octet-stream';
+        res.writeHead(200, {
+          'Content-Type': type,
+          'Cache-Control': 'no-store',
+        });
+        fs.createReadStream(resolved).pipe(res);
       });
-      fs.createReadStream(filePath).pipe(res);
     });
   } catch (e) {
     res.writeHead(500); res.end('Server error: ' + e.message);

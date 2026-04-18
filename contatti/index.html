@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti e Preventivo — Trasporti Leonardo Group | Risposta in 24 Ore</title>
+<meta name="description" content="Richiedi un preventivo per trasporto frigorifero, pallet o merce varia. Risposta entro 24 ore lavorative. Contatto diretto, nessun automatismo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="/" class="site-logo" aria-label="Trasporti Leonardo Group — Homepage">
+        <span class="site-logo__mark">TLG</span>
+        <span class="site-logo__sub">Trasporti Leonardo Group</span>
+      </a>
+      <nav class="nav-desktop" aria-label="Navigazione principale">
+        <a href="/servizi/trasporto-frigorifero/">Frigorifero</a>
+        <a href="/servizi/trasporto-pallet/">Pallet</a>
+        <a href="/servizi/trasporto-misto/">Misto</a>
+        <a href="/zone-servite/">Zone servite</a>
+        <a href="/chi-siamo/">Chi siamo</a>
+      </nav>
+      <div class="header-cta">
+        <a href="tel:[TEL]" class="header-tel" data-site-tel>[TEL]</a>
+        <a href="/contatti/" class="btn btn-header">Preventivo</a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Apri menu" aria-expanded="false" aria-controls="mobile-nav">
+          <svg width="18" height="14" viewBox="0 0 18 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="0" y1="1" x2="18" y2="1"/><line x1="0" y1="7" x2="18" y2="7"/><line x1="0" y1="13" x2="18" y2="13"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <nav id="mobile-nav" aria-label="Navigazione mobile">
+    <a href="/servizi/trasporto-frigorifero/">Trasporto Frigorifero</a>
+    <a href="/servizi/trasporto-pallet/">Trasporto Pallet</a>
+    <a href="/servizi/trasporto-misto/">Trasporto Misto</a>
+    <a href="/zone-servite/">Zone servite</a>
+    <a href="/chi-siamo/">Chi siamo</a>
+    <a href="/contatti/" class="btn-primary">Richiedi un preventivo</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" aria-labelledby="page-h1">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Trasporti Leonardo Group</a>
+        <span class="breadcrumb-sep" aria-hidden="true">›</span>
+        <span class="breadcrumb-current" aria-current="page">Contatti</span>
+      </nav>
+      <h1 class="page-h1" id="page-h1">Contattaci —<br>Richiedi un preventivo</h1>
+      <p class="page-sub">Descriveteci la tratta, il tipo di merce e le vostre esigenze. Risposta entro 24 ore lavorative. Il primo contatto è sempre con una persona.</p>
+    </div>
+  </section>
+
+  <!-- FORM + CONTATTI -->
+  <section class="section section-white" aria-labelledby="form-h2">
+    <div class="container">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+
+        <!-- FORM (3 col) -->
+        <div style="grid-column: span 3;" class="reveal">
+          <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:8px; font-family:var(--font-display);" id="form-h2">Richiedi un preventivo</h2>
+          <p style="font-size:0.9375rem; color:var(--text-muted); margin-bottom:28px;">Risposta garantita entro 24 ore lavorative.</p>
+
+          <form id="contact-form" novalidate>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:0;">
+              <div class="form-group">
+                <label class="form-label form-required" for="nome">Nome e cognome</label>
+                <input type="text" id="nome" name="nome" class="form-field" placeholder="Es. Marco Bianchi" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="azienda">Azienda</label>
+                <input type="text" id="azienda" name="azienda" class="form-field" placeholder="Es. Rossi Srl" autocomplete="organization">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:0;">
+              <div class="form-group">
+                <label class="form-label form-required" for="telefono">Telefono</label>
+                <input type="tel" id="telefono" name="telefono" class="form-field" placeholder="Es. +39 333 0000000" required autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-field" placeholder="Es. info@azienda.it" autocomplete="email">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:0;">
+              <div class="form-group">
+                <label class="form-label" for="tratta">Tratta di interesse</label>
+                <input type="text" id="tratta" name="tratta" class="form-field" placeholder="Es. Milano – Pescara">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="servizio">Tipo di servizio</label>
+                <select id="servizio" name="servizio" class="form-field">
+                  <option value="" disabled selected>Seleziona un servizio</option>
+                  <option value="frigorifero">Trasporto Frigorifero ATP</option>
+                  <option value="pallet">Trasporto Pallet</option>
+                  <option value="misto">Trasporto Misto / ADR</option>
+                  <option value="altro">Altro / Non so ancora</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="merce">Tipo di merce</label>
+              <input type="text" id="merce" name="merce" class="form-field" placeholder="Es. Prodotti alimentari refrigerati">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="note">Note aggiuntive</label>
+              <textarea id="note" name="note" class="form-field" rows="4" placeholder="Aggiungi qualsiasi informazione utile per il preventivo"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px 24px; font-size:1rem;">
+              Invia la richiesta
+            </button>
+
+            <p class="form-note">
+              Risposta entro 24 ore lavorative. I vostri dati non vengono ceduti a terzi.<br>
+              <a href="#">Privacy Policy</a>
+            </p>
+
+          </form>
+
+          <div id="form-success" class="form-success" role="status" aria-live="polite">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gray-700); margin:0 auto 16px;" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3>Richiesta ricevuta.</h3>
+            <p>La contatteremo entro 24 ore lavorative al numero o all'email che ci ha lasciato.<br>Se ha una necessità urgente, ci chiami direttamente al <a href="tel:[TEL]" data-site-tel style="color:var(--text); font-weight:600;">[TEL]</a>.</p>
+          </div>
+        </div>
+
+        <!-- CONTATTI DIRETTI (2 col) -->
+        <div style="grid-column: span 2;" class="reveal reveal-delay-1">
+          <div class="card" style="margin-bottom:16px;">
+            <span class="section-eyebrow" style="margin-bottom:16px; display:block;">Preferisci chiamare?</span>
+            <div class="contact-item" style="margin-bottom:0;">
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">Telefono</p>
+                <p class="contact-value"><a href="tel:[TEL]" data-site-tel>[TEL]</a></p>
+                <p style="font-size:0.8125rem; color:var(--text-faint); margin-top:4px;">In orario lavorativo — risponde chi gestisce il servizio</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:16px;">
+            <div class="contact-item" style="margin-bottom:0;">
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">Email</p>
+                <p class="contact-value"><a href="mailto:[EMAIL]" data-site-email>[EMAIL]</a></p>
+                <p style="font-size:0.8125rem; color:var(--text-faint); margin-top:4px;">Per richieste non urgenti o con documentazione allegata</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-bottom:16px;">
+            <div class="contact-item" style="margin-bottom:0;">
+              <div class="contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <p class="contact-label">Sede</p>
+                <p class="contact-value" data-site-address>[INDIRIZZO]</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Come funziona dopo il contatto -->
+          <div style="padding:20px; background-color:var(--gray-100); border-radius:8px; margin-top:8px;">
+            <h3 style="font-size:0.9375rem; font-weight:700; margin-bottom:10px; font-family:var(--font-display);">Cosa succede dopo il contatto</h3>
+            <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6;">Quando ricevete una nostra risposta, è da parte di una persona che ha letto la vostra richiesta. Se qualcosa non è chiaro, vi chiediamo. Se possiamo aiutarvi, ve lo diciamo subito con un preventivo specifico.</p>
+            <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6; margin-top:8px;">Niente perdite di tempo. Niente rimbalzi tra uffici.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-light" aria-labelledby="faq-h2">
+    <div class="container" style="max-width:760px;">
+      <div class="reveal" style="text-align:center; margin-bottom:48px;">
+        <span class="section-eyebrow">Domande frequenti</span>
+        <h2 class="section-heading" id="faq-h2">Le risposte prima che tu le cerchi</h2>
+      </div>
+      <div class="reveal">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Fate trasporto frigorifero anche per quantitativi ridotti?
+            <span class="faq-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer" role="region">Sì. Non è necessario riempire un mezzo completo. Valutiamo ogni richiesta in base alla tratta e al tipo di merce. Contattateci con i dettagli della spedizione.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Cosa significa che siete abilitati ADR?
+            <span class="faq-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer" role="region">L'ADR è l'accordo europeo che regola il trasporto di merci pericolose. Avere l'abilitazione ADR significa che i nostri autisti hanno la formazione specifica richiesta, i mezzi sono idonei e la documentazione è corretta. Se non siete sicuri se la vostra merce rientra nelle categorie ADR, scriveteci: vi orientiamo.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            In quanto tempo ricevo risposta a una richiesta di preventivo?
+            <span class="faq-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer" role="region">Entro 24 ore lavorative dalla ricezione della richiesta. Non lasciamo richieste senza risposta.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Fate multi-scarico?
+            <span class="faq-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer" role="region">Sì. Gestiamo spedizioni con più punti di consegna sulla stessa tratta. Non dovete coordinare ogni singolo passaggio: ci occupiamo noi dell'organizzazione del percorso.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Coprite anche tratte diverse da quelle elencate?
+            <span class="faq-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer" role="region">Le tratte indicate nella pagina zone servite sono quelle su cui operiamo più frequentemente. Valutiamo comunque ogni richiesta su percorsi diversi. Se non possiamo gestirla direttamente, siamo in grado di orientarvi verso la soluzione più adatta.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Come vengo aggiornato durante il trasporto?
+            <span class="faq-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer" role="region">Teniamo il cliente aggiornato sullo stato del carico nel corso della spedizione. Non dovete rincorrere informazioni: se succede qualcosa di inaspettato, lo sapete in tempo reale.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Cosa include la documentazione di consegna?
+            <span class="faq-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer" role="region">Ogni consegna viene documentata con bolla di consegna firmata. Avete la prova scritta di ogni passaggio, in ordine e senza buchi.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Siete certificati per il trasporto di alimenti?
+            <span class="faq-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </button>
+          <div class="faq-answer" role="region">Sì. Operiamo con certificazione ATP per il trasporto a temperatura controllata e con abilitazione ADR per le merci pericolose. La documentazione è in regola e disponibile su richiesta.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="site-footer" aria-label="Footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="site-logo" aria-label="Trasporti Leonardo Group — Homepage">
+          <span class="site-logo__mark">TLG</span>
+          <span class="site-logo__sub">Trasporti Leonardo Group</span>
+        </a>
+        <p>Trasporti professionali su tratte nazionali. Frigorifero ATP, pallet e misto. Dal Nord al Centro Italia.</p>
+        <div style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
+          <a href="tel:[TEL]" style="font-size:0.9375rem; color:rgba(255,255,255,0.70); font-weight:600; text-decoration:none;" data-site-tel>[TEL]</a>
+          <a href="mailto:[EMAIL]" style="font-size:0.9375rem; color:rgba(255,255,255,0.50); text-decoration:none;" data-site-email>[EMAIL]</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Servizi</h4>
+        <a href="/servizi/trasporto-frigorifero/">Trasporto Frigorifero ATP</a>
+        <a href="/servizi/trasporto-pallet/">Trasporto Pallet</a>
+        <a href="/servizi/trasporto-misto/">Trasporto Misto e ADR</a>
+      </div>
+      <div class="footer-col">
+        <h4>Zone servite</h4>
+        <a href="/zone-servite/">Milano · Pescara</a>
+        <a href="/zone-servite/">Tutte le tratte</a>
+      </div>
+      <div class="footer-col">
+        <h4>Azienda</h4>
+        <a href="/chi-siamo/">Chi siamo</a>
+        <a href="/contatti/">Contatti</a>
+        <a href="/contatti/">Richiedi un preventivo</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Trasporti Leonardo Group — <span data-site-piva>[P.IVA]</span></p>
+      <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="/site-config.js"></script>
+<script src="/assets/script.js"></script>
+</body>
+</html>
