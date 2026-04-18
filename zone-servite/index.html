@@ -64,132 +64,122 @@
     </div>
   </section>
 
-  <!-- TRATTE PRINCIPALI -->
-  <section class="section section-white" aria-labelledby="tratte-h2">
+  <!-- TRATTE PRINCIPALI - CAROUSEL -->
+  <section class="section section-white" aria-labelledby="tratte-h2" style="overflow:hidden; padding-bottom:0;">
     <div class="container">
       <div class="reveal" style="max-width:52ch; margin-bottom:48px;">
         <span class="section-eyebrow">Tratte operative</span>
         <h2 class="section-heading" id="tratte-h2">Le tratte su cui operiamo regolarmente</h2>
-        <p class="section-subtext">Queste sono le tratte attive su cui operiamo con frequenza consolidata, per tutti i tipi di servizio: frigorifero, pallet e misto.</p>
+        <p class="section-subtext">Tratte attive con frequenza consolidata, per tutti i tipi di servizio: frigorifero, pallet e misto.</p>
       </div>
+    </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+    <div class="routes-carousel" role="region" aria-label="Carosello tratte operative">
+      <div class="routes-carousel__track" id="routes-track">
 
-        <div class="reveal">
-          <div style="overflow-x:auto;">
-            <table class="routes-table" aria-label="Tratte principali Trasporti Leonardo Group">
-              <thead>
-                <tr>
-                  <th scope="col">Partenza</th>
-                  <th scope="col">Destinazione</th>
-                  <th scope="col">Tipo servizio</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Milano</strong></td>
-                  <td>Pescara</td>
-                  <td style="font-size:0.8125rem; color:var(--text-muted);">Frigo · Pallet · Misto</td>
-                </tr>
-                <tr>
-                  <td><strong>Milano</strong></td>
-                  <td>Roma</td>
-                  <td style="font-size:0.8125rem; color:var(--text-muted);">Frigo · Pallet · Misto</td>
-                </tr>
-                <tr>
-                  <td><strong>Milano</strong></td>
-                  <td>Firenze</td>
-                  <td style="font-size:0.8125rem; color:var(--text-muted);">Frigo · Pallet · Misto</td>
-                </tr>
-                <tr>
-                  <td><strong>Pescara</strong></td>
-                  <td>Rimini</td>
-                  <td style="font-size:0.8125rem; color:var(--text-muted);">Frigo · Pallet · Misto</td>
-                </tr>
-                <tr>
-                  <td><strong>Pescara</strong></td>
-                  <td>Bologna</td>
-                  <td style="font-size:0.8125rem; color:var(--text-muted);">Frigo · Pallet · Misto</td>
-                </tr>
-                <tr>
-                  <td><strong>Pescara</strong></td>
-                  <td>San Benedetto del Tronto</td>
-                  <td style="font-size:0.8125rem; color:var(--text-muted);">Frigo · Pallet · Misto</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="reveal reveal-delay-1">
-          <!-- Mappa placeholder -->
-          <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border); background-color:var(--gray-100); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center;">
-            <div style="text-align:center; padding:24px;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gray-400); margin:0 auto 12px;" aria-hidden="true">
-                <polygon points="3 11 22 2 13 21 11 13 3 11"/>
-              </svg>
-              <p style="font-family:var(--font-body); font-size:0.875rem; color:var(--text-muted);">Mappa tratte operative<br><span style="font-size:0.8125rem; color:var(--text-faint);">Da integrare con mappa SVG o Leaflet</span></p>
+        <div class="routes-card" role="group" aria-label="Milano — Pescara">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Duomo%20di%20Milano.JPG')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+            <div class="routes-card__route">
+              <span class="routes-card__from">Milano</span>
+              <span class="routes-card__arrow">→</span>
+              <span class="routes-card__to">Pescara</span>
             </div>
           </div>
-          <p style="font-size:0.8125rem; color:var(--text-faint); margin-top:8px; text-align:center;">
-            [Placeholder mappa — sostituire con mappa SVG o servizio tipo Leaflet]
-          </p>
         </div>
 
+        <div class="routes-card" role="group" aria-label="Milano — Roma">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%2C%20Roma.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+            <div class="routes-card__route">
+              <span class="routes-card__from">Milano</span>
+              <span class="routes-card__arrow">→</span>
+              <span class="routes-card__to">Roma</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="routes-card" role="group" aria-label="Milano — Firenze">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Florence%20Duomo%20from%20Michelangelo%20hill.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+            <div class="routes-card__route">
+              <span class="routes-card__from">Milano</span>
+              <span class="routes-card__arrow">→</span>
+              <span class="routes-card__to">Firenze</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="routes-card" role="group" aria-label="Pescara — Rimini">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Arco%20di%20Augusto-Rimini.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+            <div class="routes-card__route">
+              <span class="routes-card__from">Pescara</span>
+              <span class="routes-card__arrow">→</span>
+              <span class="routes-card__to">Rimini</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="routes-card" role="group" aria-label="Pescara — Bologna">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Bologna%20-%20Le%20due%20torri.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+            <div class="routes-card__route">
+              <span class="routes-card__from">Pescara</span>
+              <span class="routes-card__arrow">→</span>
+              <span class="routes-card__to">Bologna</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="routes-card" role="group" aria-label="Pescara — San Benedetto del Tronto">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Monumento%20al%20Pescatore%20San%20Benedetto%20Tronto.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+            <div class="routes-card__route">
+              <span class="routes-card__from">Pescara</span>
+              <span class="routes-card__arrow">→</span>
+              <span class="routes-card__to">San Benedetto del Tronto</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="routes-carousel__nav">
+        <button class="routes-carousel__btn" id="routes-prev" aria-label="Tratta precedente">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="routes-carousel__dots" id="routes-dots" role="tablist" aria-label="Seleziona tratta"></div>
+        <button class="routes-carousel__btn" id="routes-next" aria-label="Tratta successiva">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- MACRO-AREE -->
+  <!-- MACRO-AREE — MAPPA INTERATTIVA -->
   <section class="section section-light" aria-labelledby="aree-h2">
     <div class="container">
-      <div class="reveal" style="max-width:48ch; margin-bottom:40px;">
+      <div class="reveal" style="max-width:48ch; margin-bottom:48px;">
         <span class="section-eyebrow">Copertura regionale</span>
         <h2 class="section-heading" id="aree-h2">Macro-aree coperte</h2>
-        <p class="section-subtext">Le regioni all'interno delle quali operiamo con frequenza consolidata.</p>
+        <p class="section-subtext">Le regioni dove operiamo con frequenza consolidata. Passa il cursore sulle regioni evidenziate per i dettagli.</p>
       </div>
 
-      <div class="reveal reveal-delay-1" style="margin-bottom:40px;">
-        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:16px;">
-
-          <div class="card" style="padding:20px 24px;">
-            <p style="font-family:var(--font-display); font-weight:700; font-size:1.0625rem; margin-bottom:6px;">Lombardia</p>
-            <p style="font-size:0.875rem; color:var(--text-muted);">Milano e provincia — hub Nord principale</p>
-          </div>
-
-          <div class="card" style="padding:20px 24px;">
-            <p style="font-family:var(--font-display); font-weight:700; font-size:1.0625rem; margin-bottom:6px;">Abruzzo</p>
-            <p style="font-size:0.875rem; color:var(--text-muted);">Pescara e provincia — hub adriatico principale</p>
-          </div>
-
-          <div class="card" style="padding:20px 24px;">
-            <p style="font-family:var(--font-display); font-weight:700; font-size:1.0625rem; margin-bottom:6px;">Marche</p>
-            <p style="font-size:0.875rem; color:var(--text-muted);">San Benedetto del Tronto, Ancona, tratte adriatiche</p>
-          </div>
-
-          <div class="card" style="padding:20px 24px;">
-            <p style="font-family:var(--font-display); font-weight:700; font-size:1.0625rem; margin-bottom:6px;">Lazio</p>
-            <p style="font-size:0.875rem; color:var(--text-muted);">Roma e provincia</p>
-          </div>
-
-          <div class="card" style="padding:20px 24px;">
-            <p style="font-family:var(--font-display); font-weight:700; font-size:1.0625rem; margin-bottom:6px;">Toscana</p>
-            <p style="font-size:0.875rem; color:var(--text-muted);">Firenze e principali centri</p>
-          </div>
-
-          <div class="card" style="padding:20px 24px;">
-            <p style="font-family:var(--font-display); font-weight:700; font-size:1.0625rem; margin-bottom:6px;">Umbria</p>
-            <p style="font-size:0.875rem; color:var(--text-muted);">Tratte interne Centro Italia</p>
-          </div>
-
-          <div class="card" style="padding:20px 24px;">
-            <p style="font-family:var(--font-display); font-weight:700; font-size:1.0625rem; margin-bottom:6px;">Emilia-Romagna</p>
-            <p style="font-size:0.875rem; color:var(--text-muted);">Bologna, Rimini, asse adriatico</p>
-          </div>
-
+      <div class="reveal" style="display:grid; grid-template-columns:1fr; gap:40px; align-items:start;">
+        <div style="display:flex; flex-wrap:wrap; gap:40px; align-items:flex-start;">
+          <div id="italy-map" style="flex:0 0 auto; width:min(300px,100%);" aria-label="Mappa regioni Italia"></div>
+          <div id="italy-legend" style="flex:1; min-width:220px; padding-top:8px;"></div>
         </div>
       </div>
     </div>
+    <div id="map-tooltip" class="map-tooltip" role="tooltip" aria-live="polite"></div>
   </section>
 
   <!-- TRATTA NON IN ELENCO -->
@@ -262,6 +252,7 @@
   </div>
 </footer>
 
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script src="/site-config.js"></script>
 <script src="/assets/script.js"></script>
 </body>
