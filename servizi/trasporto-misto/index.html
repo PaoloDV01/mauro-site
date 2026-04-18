@@ -62,10 +62,10 @@
         <span class="breadcrumb-current" aria-current="page">Trasporto Misto</span>
       </nav>
       <div style="display:flex; gap:14px; align-items:center; margin-bottom:16px; flex-wrap:wrap;">
-        <div class="cert-badge" aria-label="Abilitazione ADR">
-          <span style="font-size:0.6rem; letter-spacing:0.06em; color:var(--silver);">ABIT.</span>
+        <a href="https://unece.org/transport/dangerous-goods/about-adr" class="cert-badge" aria-label="Abilitazione ADR — normativa UNECE" target="_blank" rel="noopener">
+          <span style="font-size:0.6rem; letter-spacing:0.06em; color:var(--silver-light);">ABIT.</span>
           <span>ADR</span>
-        </div>
+        </a>
       </div>
       <h1 class="page-h1" id="page-h1">Trasporto misto e merce varia —<br>flessibilità su tratte nazionali</h1>
       <p class="page-sub">Furgoni, telonati, carichi eterogenei, multi-scarico. Certificazione ADR per merci pericolose. Se la tua spedizione non rientra in una categoria standard, siamo il vettore giusto.</p>
@@ -103,10 +103,10 @@
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="reveal">
           <div style="display:flex; gap:16px; align-items:center; margin-bottom:24px;">
-            <div class="cert-badge cert-badge-light" aria-label="Abilitazione ADR">
-              <span style="font-size:0.6rem; font-weight:600; letter-spacing:0.06em; color:var(--gray-500);">ABIT.</span>
+            <a href="https://unece.org/transport/dangerous-goods/about-adr" class="cert-badge cert-badge-light" aria-label="Abilitazione ADR — normativa UNECE" target="_blank" rel="noopener">
+              <span style="font-size:0.6rem; font-weight:600; letter-spacing:0.06em;">ABIT.</span>
               <span>ADR</span>
-            </div>
+            </a>
             <span class="section-eyebrow" style="margin-bottom:0;">Certificazione ADR</span>
           </div>
           <h2 class="section-heading" id="adr-h2">ADR: quando serve e cosa garantisce</h2>
@@ -194,6 +194,78 @@
           <p style="font-size:0.875rem; color:var(--text-faint); margin-top:12px;">Hai una tratta o un'esigenza specifica? Contattaci direttamente.</p>
           <div style="margin-top:16px;"><a href="/zone-servite/" class="btn btn-outline btn-sm">Vedi tutte le zone servite</a></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRATTE CAROUSEL -->
+  <section class="section section-light" aria-labelledby="tratte-carousel-h2" style="overflow:hidden; padding-bottom:0;">
+    <div class="container">
+      <div class="reveal" style="max-width:52ch; margin-bottom:48px;">
+        <span class="section-eyebrow">Tratte operative</span>
+        <h2 class="section-heading" id="tratte-carousel-h2">Le tratte su cui operiamo regolarmente</h2>
+        <p class="section-subtext">Tratte attive con frequenza consolidata, per tutti i tipi di servizio: frigorifero, pallet e misto.</p>
+      </div>
+    </div>
+    <div class="routes-carousel" role="region" aria-label="Carosello tratte operative">
+      <div class="routes-carousel__track" id="routes-track">
+        <div class="routes-card" role="group" aria-label="Milano — Pescara">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Ponte_del_Mare_di_Pescara_2011.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__from">Da Milano</p>
+            <p class="routes-card__city">Pescara</p>
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+          </div>
+        </div>
+        <div class="routes-card" role="group" aria-label="Milano — Roma">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Colosseo%2C%20Roma.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__from">Da Milano</p>
+            <p class="routes-card__city">Roma</p>
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+          </div>
+        </div>
+        <div class="routes-card" role="group" aria-label="Milano — Firenze">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Florence%20Duomo%20from%20Michelangelo%20hill.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__from">Da Milano</p>
+            <p class="routes-card__city">Firenze</p>
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+          </div>
+        </div>
+        <div class="routes-card" role="group" aria-label="Pescara — Rimini">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Arco%20di%20Augusto-Rimini.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__from">Da Pescara</p>
+            <p class="routes-card__city">Rimini</p>
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+          </div>
+        </div>
+        <div class="routes-card" role="group" aria-label="Pescara — Bologna">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Bologna%20-%20Le%20due%20torri.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__from">Da Pescara</p>
+            <p class="routes-card__city">Bologna</p>
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+          </div>
+        </div>
+        <div class="routes-card" role="group" aria-label="Pescara — San Benedetto del Tronto">
+          <div class="routes-card__bg" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Monumento%20al%20Pescatore%20San%20Benedetto%20Tronto.jpg')"></div>
+          <div class="routes-card__body">
+            <p class="routes-card__from">Da Pescara</p>
+            <p class="routes-card__city">San Benedetto del Tronto</p>
+            <p class="routes-card__service">Frigo · Pallet · Misto</p>
+          </div>
+        </div>
+      </div>
+      <div class="routes-carousel__nav">
+        <button class="routes-carousel__btn" id="routes-prev" aria-label="Tratta precedente">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="routes-carousel__dots" id="routes-dots" role="tablist" aria-label="Seleziona tratta"></div>
+        <button class="routes-carousel__btn" id="routes-next" aria-label="Tratta successiva">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
   </section>
