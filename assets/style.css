@@ -1506,39 +1506,31 @@ textarea.form-field { resize: vertical; min-height: 100px; }
   padding: 20px 22px;
   z-index: 1;
 }
-.routes-card__service {
+.routes-card__from {
   font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-  margin-bottom: 10px;
+  color: rgba(255,255,255,0.60);
+  margin-bottom: 6px;
 }
-.routes-card__route {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.routes-card__from {
+.routes-card__city {
   font-family: var(--font-display);
   font-size: 1.75rem;
   font-weight: 800;
   color: var(--white);
   letter-spacing: -0.03em;
   line-height: 1;
+  margin-bottom: 10px;
 }
-.routes-card__arrow {
-  font-size: 1rem;
-  color: rgba(255,255,255,0.40);
-  line-height: 1;
-}
-.routes-card__to {
+.routes-card__service {
   font-family: var(--font-body);
-  font-size: 0.9375rem;
+  font-size: 0.6875rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.80);
-  line-height: 1;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
 }
 
 .routes-carousel__nav {
