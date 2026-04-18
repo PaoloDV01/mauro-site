@@ -101,7 +101,18 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:0;">
               <div class="form-group">
                 <label class="form-label" for="tratta">Tratta di interesse</label>
-                <input type="text" id="tratta" name="tratta" class="form-field" placeholder="Es. Milano – Pescara">
+                <div class="editable-chip" data-editable-chip style="width:100%;">
+                  <input type="text" id="tratta" name="tratta" class="editable-chip__input"
+                         placeholder="Es. Milano – Pescara" readonly>
+                  <div class="editable-chip__btn-wrap">
+                    <button type="button" class="editable-chip__btn editable-chip__btn--edit" aria-label="Modifica tratta">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    </button>
+                    <button type="button" class="editable-chip__btn editable-chip__btn--save" aria-label="Salva tratta">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    </button>
+                  </div>
+                </div>
               </div>
               <div class="form-group">
                 <label class="form-label" for="servizio">Tipo di servizio</label>
@@ -117,7 +128,18 @@
 
             <div class="form-group">
               <label class="form-label" for="merce">Tipo di merce</label>
-              <input type="text" id="merce" name="merce" class="form-field" placeholder="Es. Prodotti alimentari refrigerati">
+              <div class="editable-chip" data-editable-chip style="width:100%;">
+                <input type="text" id="merce" name="merce" class="editable-chip__input"
+                       placeholder="Es. Prodotti alimentari refrigerati" readonly>
+                <div class="editable-chip__btn-wrap">
+                  <button type="button" class="editable-chip__btn editable-chip__btn--edit" aria-label="Modifica tipo di merce">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  </button>
+                  <button type="button" class="editable-chip__btn editable-chip__btn--save" aria-label="Salva tipo di merce">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                  </button>
+                </div>
+              </div>
             </div>
 
             <div class="form-group">

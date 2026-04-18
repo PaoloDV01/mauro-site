@@ -501,4 +501,49 @@
 
   initIsoWaveBackgrounds();
 
+  /* === EDITABLE CHIP === */
+  (function () {
+    document.querySelectorAll('[data-editable-chip]').forEach(function (chip) {
+      var input = chip.querySelector('.editable-chip__input');
+      var editBtn = chip.querySelector('.editable-chip__btn--edit');
+      var saveBtn = chip.querySelector('.editable-chip__btn--save');
+      if (!input || !editBtn || !saveBtn) return;
+
+      editBtn.classList.add('ec-visible');
+      saveBtn.classList.add('ec-hidden');
+
+      function startEdit() {
+        chip.classList.add('editing');
+        input.readOnly = false;
+        requestAnimationFrame(function () { input.focus(); input.select(); });
+        editBtn.classList.remove('ec-visible');
+        editBtn.classList.add('ec-hidden');
+        saveBtn.classList.remove('ec-hidden');
+        saveBtn.classList.add('ec-visible');
+      }
+
+      function stopEdit() {
+        if (!input.value.trim()) input.value = '';
+        chip.classList.remove('editing');
+        input.readOnly = true;
+        saveBtn.classList.remove('ec-visible');
+        saveBtn.classList.add('ec-hidden');
+        editBtn.classList.remove('ec-hidden');
+        editBtn.classList.add('ec-visible');
+        chip.dispatchEvent(new CustomEvent('chip:save', { detail: { value: input.value } }));
+      }
+
+      chip.addEventListener('click', function () {
+        if (!chip.classList.contains('editing')) startEdit();
+      });
+      editBtn.addEventListener('click', function (e) { e.stopPropagation(); startEdit(); });
+      saveBtn.addEventListener('click', function (e) { e.stopPropagation(); stopEdit(); });
+      input.addEventListener('click', function (e) { e.stopPropagation(); });
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); stopEdit(); }
+        if (e.key === 'Escape') { input.value = input.defaultValue || ''; stopEdit(); }
+      });
+    });
+  }());
+
 })();
