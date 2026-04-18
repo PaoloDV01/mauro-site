@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/hero-intro.css">
 <link rel="stylesheet" href="/assets/cinematic-cta.css">
 </head>
 <body>
@@ -59,48 +60,112 @@
 
 <main>
 
-  <!-- HERO -->
-  <section id="hero" aria-labelledby="hero-h1">
-    <div class="container">
-      <div class="hero-inner">
+  <!-- HERO INTRO — Cinematic opening sequence -->
+  <div class="hi-wrapper" id="hi-wrapper">
+    <div class="hi-stage">
 
-        <div class="hero-text-col">
-          <p class="hero-eyebrow">Trasporto · ATP · ADR · Tratte nazionali</p>
-          <h1 class="hero-h1" id="hero-h1">Il tuo carico in mani sicure.<br>Dalla partenza alla firma.</h1>
-          <p class="hero-sub">Trasporto frigorifero ATP, pallet e merce varia su tratte nazionali tra Lombardia e Centro Italia. 27 anni di esperienza. Risposta al preventivo entro 24 ore.</p>
-          <div class="hero-ctas">
-            <a href="/contatti/" class="btn btn-primary btn-lg">Richiedi un preventivo</a>
-            <a href="tel:[TEL]" class="btn btn-outline btn-lg">Chiamaci — <span data-site-tel>[TEL]</span></a>
+      <!-- Shared backgrounds -->
+      <div class="hi-grid" aria-hidden="true"></div>
+      <div class="hi-aurora" aria-hidden="true"></div>
+
+      <!-- SCREEN 1: Brand Reveal -->
+      <div class="hi-s1" id="hi-s1">
+        <p class="hi-s1__eyebrow" aria-hidden="true">TLG · Trasporti Leonardo Group</p>
+        <p class="hi-s1__heading">
+          Trasporti<br>Leonardo Group
+        </p>
+        <p class="hi-s1__sub">Trasporto frigorifero, pallet e misto tra Lombardia e Centro Italia.<br>Precisione operativa e risposta entro 24 ore lavorative.</p>
+        <div class="hi-s1__scroll" aria-hidden="true">
+          <span>Scorri per iniziare</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+
+      <!-- SCREEN 2: Navigation Hub -->
+      <div class="hi-s2" id="hi-s2" aria-label="Scegli dove iniziare">
+
+        <!-- Ghost background text -->
+        <div class="hi-s2__bg" aria-hidden="true">LEONARDO</div>
+
+        <!-- Marquee strip -->
+        <div class="hi-marquee" aria-hidden="true">
+          <div class="hi-marquee__track">
+            <div class="hi-marquee__inner">
+              <span>Milano</span><span class="hi-marquee__sep">✦</span>
+              <span>Roma</span><span class="hi-marquee__sep">✦</span>
+              <span>Firenze</span><span class="hi-marquee__sep">✦</span>
+              <span>Bologna</span><span class="hi-marquee__sep">✦</span>
+              <span>Pescara</span><span class="hi-marquee__sep">✦</span>
+              <span>Rimini</span><span class="hi-marquee__sep">✦</span>
+              <span>San Benedetto del Tronto</span><span class="hi-marquee__sep">✦</span>
+              <span>Tratte nazionali</span><span class="hi-marquee__sep">✦</span>
+              <span>Frigorifero ATP</span><span class="hi-marquee__sep">✦</span>
+              <span>Abilitazione ADR</span><span class="hi-marquee__sep">✦</span>
+              <span>27 anni di esperienza</span><span class="hi-marquee__sep">✦</span>
+            </div>
+            <!-- Duplicate for seamless loop -->
+            <div class="hi-marquee__inner" aria-hidden="true">
+              <span>Milano</span><span class="hi-marquee__sep">✦</span>
+              <span>Roma</span><span class="hi-marquee__sep">✦</span>
+              <span>Firenze</span><span class="hi-marquee__sep">✦</span>
+              <span>Bologna</span><span class="hi-marquee__sep">✦</span>
+              <span>Pescara</span><span class="hi-marquee__sep">✦</span>
+              <span>Rimini</span><span class="hi-marquee__sep">✦</span>
+              <span>San Benedetto del Tronto</span><span class="hi-marquee__sep">✦</span>
+              <span>Tratte nazionali</span><span class="hi-marquee__sep">✦</span>
+              <span>Frigorifero ATP</span><span class="hi-marquee__sep">✦</span>
+              <span>Abilitazione ADR</span><span class="hi-marquee__sep">✦</span>
+              <span>27 anni di esperienza</span><span class="hi-marquee__sep">✦</span>
+            </div>
           </div>
-
-          <ul class="trust-list" aria-label="Certificazioni e garanzie">
-            <li>Certificazione ATP — trasporto a temperatura controllata</li>
-            <li>Abilitazione ADR — merci pericolose</li>
-            <li>27 anni di esperienza nel settore</li>
-            <li>Flotta flessibile sempre disponibile</li>
-            <li>Risposta garantita entro 24 ore</li>
-          </ul>
         </div>
 
-        <div class="hero-image-col" aria-hidden="true">
-          <div class="hero-img-wrap">
-            <img
-              src="https://unsplash.com/photos/Rhwj3CPwc6o/download?force=true&w=1600"
-              alt="Mezzo frigorifero Trasporti Leonardo Group"
-              width="640" height="480"
-              loading="eager"
-            >
+        <!-- Main body -->
+        <div class="hi-s2__body">
+
+          <p class="hi-s2__question">Di cosa hai bisogno?</p>
+
+          <!-- Primary service pills -->
+          <div class="hi-services" role="list">
+            <a href="/servizi/trasporto-frigorifero/" class="hi-pill hi-pill--primary" role="listitem" data-hi-mag>Trasporto Frigorifero</a>
+            <a href="/servizi/trasporto-pallet/"       class="hi-pill hi-pill--primary" role="listitem" data-hi-mag>Trasporto Pallet</a>
+            <a href="/servizi/trasporto-misto/"        class="hi-pill hi-pill--primary" role="listitem" data-hi-mag>Trasporto Misto</a>
+          </div>
+
+          <div class="hi-s2__sep" aria-hidden="true"></div>
+
+          <!-- Secondary nav -->
+          <nav class="hi-nav" aria-label="Navigazione secondaria">
+            <a href="/chi-siamo/">Chi siamo</a>
+            <a href="/zone-servite/">Zone servite</a>
+            <a href="/contatti/">Richiedi un preventivo</a>
+            <a href="/privacy-policy/">Privacy Policy</a>
+          </nav>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="hi-s2__foot" aria-hidden="true">
+          <p class="hi-s2__copy">© 2026 Trasporti Leonardo Group — P.IVA <span data-site-piva>[P.IVA]</span></p>
+          <div class="hi-s2__foot-links">
+            <a href="/privacy-policy/">Privacy Policy</a>
+            <a href="/privacy-policy/#cookie">Cookie Policy</a>
           </div>
         </div>
 
       </div>
+
     </div>
-  </section>
+  </div>
+
+  <!-- Bridge: dark intro → light content -->
+  <div class="hi-bridge" aria-hidden="true"></div>
 
   <!-- SERVIZI -->
   <section id="servizi" class="section section-light" aria-labelledby="servizi-h2">
     <div class="container">
       <div class="reveal" style="max-width:48ch; margin-bottom:56px;">
+        <h1 class="editorial-h1">Trasporto frigorifero, pallet e misto tra Lombardia e Centro Italia</h1>
         <span class="section-eyebrow">I nostri servizi</span>
         <h2 class="section-heading" id="servizi-h2">Cosa facciamo, concretamente</h2>
         <p class="section-subtext">Operiamo su tratte nazionali con tre linee di servizio. Ogni spedizione viene seguita con la stessa attenzione, dal ritiro alla consegna.</p>
@@ -211,6 +276,16 @@
             <div>
               <h3 style="font-size:1.0625rem; font-weight:700; margin-bottom:6px; font-family:var(--font-display);">27 anni nel settore</h3>
               <p style="font-size:0.9375rem; color:var(--text-muted); line-height:1.6;">L'esperienza operativa di Trasporti Leonardo Group include 27 anni di lavoro nel settore dell'autotrasporto professionale, con una lunga storia nel trasporto alimentare per operatori di scala nazionale.</p>
+            </div>
+          </div>
+
+          <div class="section-cta-sep reveal">
+            <div class="cta-row">
+              <a href="/contatti/" class="btn btn-primary">Richiedi un preventivo</a>
+              <a href="/servizi/trasporto-frigorifero/" class="btn-text">
+                Scopri il trasporto frigorifero ATP
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
             </div>
           </div>
 
@@ -350,6 +425,13 @@
             </div>
           </div>
 
+          <div class="reveal" style="margin-top:8px; padding-top:24px; border-top:1px solid var(--border);">
+            <div class="cta-row">
+              <a href="/contatti/" class="btn btn-primary">Inizia dal preventivo</a>
+              <a href="tel:[TEL]" class="btn btn-outline" data-tel-href>Chiamaci direttamente</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -443,6 +525,15 @@
         </div>
 
       </div>
+
+      <div class="faq-cta reveal">
+        <p>Domanda non in elenco? Contattateci direttamente.</p>
+        <div class="cta-row cta-row--center">
+          <a href="/contatti/" class="btn btn-primary">Scrivi o richiedi un preventivo</a>
+          <a href="tel:[TEL]" class="btn btn-outline" data-tel-href>Chiamaci</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -521,8 +612,8 @@
     <div class="cinematic-bottom">
       <p class="cinematic-copyright">© 2026 Trasporti Leonardo Group — P.IVA <span data-site-piva>[P.IVA]</span></p>
       <div class="cinematic-bottom-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Cookie Policy</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/privacy-policy/#cookie">Cookie Policy</a>
         <a href="/contatti/">Contatti</a>
       </div>
       <button class="cinematic-back-top" id="cinematic-back-top" aria-label="Torna in cima">
@@ -538,6 +629,7 @@
 
 <script src="/site-config.js"></script>
 <script src="/assets/script.js"></script>
+<script src="/assets/hero-intro.js"></script>
 <script src="/assets/cinematic-cta.js"></script>
 </body>
 </html>

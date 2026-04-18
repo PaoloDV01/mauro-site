@@ -101,18 +101,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:0;">
               <div class="form-group">
                 <label class="form-label" for="tratta">Tratta di interesse</label>
-                <div class="editable-chip" data-editable-chip style="width:100%;">
-                  <input type="text" id="tratta" name="tratta" class="editable-chip__input"
-                         placeholder="Es. Milano – Pescara" readonly>
-                  <div class="editable-chip__btn-wrap">
-                    <button type="button" class="editable-chip__btn editable-chip__btn--edit" aria-label="Modifica tratta">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    </button>
-                    <button type="button" class="editable-chip__btn editable-chip__btn--save" aria-label="Salva tratta">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    </button>
-                  </div>
-                </div>
+                <input type="text" id="tratta" name="tratta" class="form-field" placeholder="Es. Milano – Pescara" autocomplete="off">
               </div>
               <div class="form-group">
                 <label class="form-label" for="servizio">Tipo di servizio</label>
@@ -128,18 +117,7 @@
 
             <div class="form-group">
               <label class="form-label" for="merce">Tipo di merce</label>
-              <div class="editable-chip" data-editable-chip style="width:100%;">
-                <input type="text" id="merce" name="merce" class="editable-chip__input"
-                       placeholder="Es. Prodotti alimentari refrigerati" readonly>
-                <div class="editable-chip__btn-wrap">
-                  <button type="button" class="editable-chip__btn editable-chip__btn--edit" aria-label="Modifica tipo di merce">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                  </button>
-                  <button type="button" class="editable-chip__btn editable-chip__btn--save" aria-label="Salva tipo di merce">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                  </button>
-                </div>
-              </div>
+              <input type="text" id="merce" name="merce" class="form-field" placeholder="Es. Prodotti alimentari refrigerati" autocomplete="off">
             </div>
 
             <div class="form-group">
@@ -147,13 +125,14 @@
               <textarea id="note" name="note" class="form-field" rows="4" placeholder="Aggiungi qualsiasi informazione utile per il preventivo"></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:14px 24px; font-size:1rem;">
+            <button type="submit" class="btn btn-primary btn-submit">
               Invia la richiesta
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left:6px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
 
             <p class="form-note">
               Risposta entro 24 ore lavorative. I vostri dati non vengono ceduti a terzi.<br>
-              <a href="#">Privacy Policy</a>
+              <a href="/privacy-policy/">Privacy Policy</a>
             </p>
 
           </form>
@@ -167,35 +146,34 @@
 
         <!-- CONTATTI DIRETTI (2 col) -->
         <div style="grid-column: span 2;" class="reveal reveal-delay-1">
-          <div class="card" style="margin-bottom:16px;">
-            <span class="section-eyebrow" style="margin-bottom:16px; display:block;">Preferisci chiamare?</span>
-            <div class="contact-item" style="margin-bottom:0;">
+
+          <div class="card contact-card" style="margin-bottom:16px;">
+            <span class="section-eyebrow" style="margin-bottom:20px; display:block;">Contatti diretti</span>
+
+            <div class="contact-item">
               <div class="contact-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
-              <div>
+              <div style="flex:1;">
                 <p class="contact-label">Telefono</p>
                 <p class="contact-value"><a href="tel:[TEL]" data-site-tel>[TEL]</a></p>
-                <p style="font-size:0.8125rem; color:var(--text-faint); margin-top:4px;">In orario lavorativo — risponde chi gestisce il servizio</p>
+                <p style="font-size:0.8125rem; color:var(--text-faint); margin-top:4px; margin-bottom:12px;">Risponde chi gestisce il servizio, in orario lavorativo</p>
+                <a href="tel:[TEL]" class="btn btn-primary btn-sm contact-call-cta" data-tel-href>Chiama ora</a>
               </div>
             </div>
-          </div>
 
-          <div class="card" style="margin-bottom:16px;">
-            <div class="contact-item" style="margin-bottom:0;">
+            <div class="contact-item">
               <div class="contact-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
               <div>
                 <p class="contact-label">Email</p>
                 <p class="contact-value"><a href="mailto:[EMAIL]" data-site-email>[EMAIL]</a></p>
-                <p style="font-size:0.8125rem; color:var(--text-faint); margin-top:4px;">Per richieste non urgenti o con documentazione allegata</p>
+                <p style="font-size:0.8125rem; color:var(--text-faint); margin-top:4px;">Per richieste con documentazione allegata o non urgenti</p>
               </div>
             </div>
-          </div>
 
-          <div class="card" style="margin-bottom:16px;">
-            <div class="contact-item" style="margin-bottom:0;">
+            <div class="contact-item">
               <div class="contact-icon" aria-hidden="true">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </div>
@@ -204,13 +182,12 @@
                 <p class="contact-value" data-site-address>[INDIRIZZO]</p>
               </div>
             </div>
+
           </div>
 
-          <!-- Come funziona dopo il contatto -->
-          <div style="padding:20px; background-color:var(--gray-100); border-radius:8px; margin-top:8px;">
-            <h3 style="font-size:0.9375rem; font-weight:700; margin-bottom:10px; font-family:var(--font-display);">Cosa succede dopo il contatto</h3>
-            <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6;">Quando ricevete una nostra risposta, è da parte di una persona che ha letto la vostra richiesta. Se qualcosa non è chiaro, vi chiediamo. Se possiamo aiutarvi, ve lo diciamo subito con un preventivo specifico.</p>
-            <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6; margin-top:8px;">Niente perdite di tempo. Niente rimbalzi tra uffici.</p>
+          <div style="padding:20px 24px; background-color:var(--gray-100); border-radius:8px;">
+            <h3 style="font-size:0.9375rem; font-weight:700; margin-bottom:8px; font-family:var(--font-display);">Cosa succede dopo</h3>
+            <p style="font-size:0.875rem; color:var(--text-muted); line-height:1.6;">La vostra richiesta viene letta da una persona. Se qualcosa non è chiaro, vi chiediamo. Se possiamo aiutarvi, ve lo diciamo subito con un preventivo specifico. Niente rimbalzi tra uffici.</p>
           </div>
 
         </div>
@@ -293,6 +270,15 @@
         </div>
 
       </div>
+
+      <div class="faq-cta reveal">
+        <p>Non hai trovato risposta? Scriveteci direttamente o chiamateci.</p>
+        <div class="cta-row cta-row--center">
+          <a href="#form-h2" class="btn btn-primary" onclick="document.getElementById('nome').focus(); return false;">Compila il form</a>
+          <a href="tel:[TEL]" class="btn btn-outline" data-tel-href>Chiama ora</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -333,7 +319,7 @@
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 Trasporti Leonardo Group — <span data-site-piva>[P.IVA]</span></p>
-      <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Cookie Policy</a></div>
+      <div class="footer-links"><a href="/privacy-policy/">Privacy Policy</a><a href="/privacy-policy/#cookie">Cookie Policy</a></div>
     </div>
   </div>
 </footer>

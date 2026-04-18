@@ -294,12 +294,12 @@ img { max-width: 100%; height: auto; display: block; }
 /* Outline on light bg */
 .btn-outline {
   background-color: transparent;
-  color: var(--black);
-  border-color: var(--gray-300);
+  color: var(--navy);
+  border-color: var(--navy);
 }
 .btn-outline:hover {
-  background-color: var(--gray-100);
-  border-color: var(--gray-400);
+  background-color: rgba(16,42,67,0.06);
+  border-color: var(--navy-dark);
 }
 
 /* Header CTA button */
@@ -1755,4 +1755,110 @@ textarea.form-field { resize: vertical; min-height: 100px; }
   font-size: 0.8125rem;
   color: var(--text-muted);
   line-height: 1.4;
+}
+
+/* === CTA SYSTEM ADDITIONS === */
+
+/* Tertiary text CTA */
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 150ms ease-out, gap 150ms ease-out;
+  white-space: nowrap;
+}
+.btn-text:hover {
+  color: var(--navy-dark);
+  gap: 10px;
+}
+.btn-text svg {
+  transition: transform 150ms ease-out;
+  flex-shrink: 0;
+}
+.btn-text:hover svg { transform: translateX(3px); }
+
+/* CTA row layout helper */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.cta-row--center { justify-content: center; }
+
+/* Section CTA separator block */
+.section-cta-sep {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+/* Full-width form submit */
+.btn-submit {
+  width: 100%;
+  justify-content: center;
+  padding: 15px 24px;
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+}
+
+/* Focus states */
+.btn:focus-visible,
+.btn-text:focus-visible {
+  outline: 2px solid var(--navy);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Contact card sidebar */
+.contact-card .contact-item + .contact-item {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* Inline contact CTA inside sidebar */
+.contact-call-cta {
+  margin-top: 12px;
+}
+
+/* Post-FAQ CTA block */
+.faq-cta {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+.faq-cta p {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* Editorial H1 — SEO heading, visually subordinate to section heading */
+.editorial-h1 {
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Bridge gradient: dark intro → light page background */
+.hi-bridge {
+  height: 80px;
+  background: linear-gradient(to bottom, #0B1F33 0%, var(--bg) 100%);
+  pointer-events: none;
 }
