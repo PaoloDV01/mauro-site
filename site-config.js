@@ -18,13 +18,13 @@ window.SITE = {
   tel:      '+39 340 685 0138',
   telHref:  'tel:+393406850138',
   email:    'paolodv01@gmail.com',
-  address:  '[INDIRIZZO]',
+  address:  'Contrada Molini di Tenna, 102 — 63900 Fermo FM',
   piva:     '[P.IVA]',
   year:     '2026',
 
   services: [
-    { name: 'Trasporto Frigorifero', url: '/servizi/trasporto-frigorifero/' },
-    { name: 'Trasporto Pallet',      url: '/servizi/trasporto-pallet/'      },
+    { name: 'Trasporto Temperatura Controllata', url: '/servizi/trasporto-frigorifero/' },
+    { name: 'Trasporto Merce Generica',      url: '/servizi/trasporto-pallet/'      },
     { name: 'Trasporto Misto',       url: '/servizi/trasporto-misto/'       },
   ],
 
