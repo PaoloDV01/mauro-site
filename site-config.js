@@ -15,9 +15,9 @@
 window.SITE = {
   brand:    'Trasporti Leonardo Group',
   tagline:  'Trasporti professionali. Sempre.',
-  tel:      '[TEL]',
-  telHref:  'tel:[TEL]',
-  email:    '[EMAIL]',
+  tel:      '+39 340 685 0138',
+  telHref:  'tel:+393406850138',
+  email:    'paolodv01@gmail.com',
   address:  '[INDIRIZZO]',
   piva:     '[P.IVA]',
   year:     '2026',

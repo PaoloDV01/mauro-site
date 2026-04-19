@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il tuo preventivo — Trasporti Leonardo Group</title>
+</head>
+<body style="margin:0;padding:0;background:#f4f4f5;font-family:system-ui,-apple-system,sans-serif;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;padding:32px 16px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.10);">
+
+  <!-- Header -->
+  <tr>
+    <td style="background:#0B1F33;padding:28px 32px;">
+      <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);">Trasporti Leonardo Group</p>
+      <h1 style="margin:10px 0 0;font-size:24px;font-weight:800;color:#ffffff;letter-spacing:-.025em;">
+        Il suo preventivo
+      </h1>
+    </td>
+  </tr>
+
+  <!-- Greeting -->
+  <tr>
+    <td style="padding:28px 32px 0;">
+      <p style="margin:0;font-size:15px;line-height:1.65;color:#1a1a1a;">
+        Gentile <strong>{{nome}}</strong>,
+      </p>
+      <p style="margin:14px 0 0;font-size:15px;line-height:1.65;color:#555;">
+        abbiamo esaminato la sua richiesta di trasporto e siamo lieti di proporle
+        il seguente preventivo.
+      </p>
+    </td>
+  </tr>
+
+  <!-- Route + Price -->
+  <tr>
+    <td style="padding:20px 32px 0;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#0B1F33;border-radius:6px;">
+        <tr>
+          <td style="padding:20px 24px;">
+            <p style="margin:0 0 6px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);">Tratta</p>
+            <p style="margin:0;font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-.02em;">
+              {{partenza}} → {{scarico}}
+            </p>
+            <p style="margin:4px 0 0;font-size:13px;color:rgba(255,255,255,.55);">{{servizio}}</p>
+          </td>
+          <td style="padding:20px 24px;text-align:right;">
+            <p style="margin:0 0 4px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);">Prezzo totale</p>
+            <p style="margin:0;font-size:32px;font-weight:800;color:#ffffff;letter-spacing:-.03em;">
+              {{final_price}}
+            </p>
+            <p style="margin:4px 0 0;font-size:11px;color:rgba(255,255,255,.40);">IVA esclusa</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Note from admin (if any) -->
+  <!-- If note_admin is empty this block will appear empty — handle via interpolation -->
+  <tr>
+    <td style="padding:20px 32px 0;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f8f8;border-radius:6px;">
+        <tr>
+          <td style="padding:16px 20px;">
+            <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:#aaa;">
+              Cosa include questo preventivo
+            </p>
+            <p style="margin:0;font-size:14px;line-height:1.65;color:#555;">
+              Trasporto da <strong>{{partenza}}</strong> a <strong>{{scarico}}</strong>,
+              con mezzo idoneo al tipo di merce indicato, documentazione di trasporto
+              e aggiornamenti in corso di spedizione.
+            </p>
+            {{note_admin}}
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Next steps -->
+  <tr>
+    <td style="padding:20px 32px 0;">
+      <p style="margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:.10em;text-transform:uppercase;color:#aaa;">Come procedere</p>
+      <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:8px 0;vertical-align:top;">
+            <span style="display:inline-block;width:22px;height:22px;background:#0B1F33;color:#fff;border-radius:50%;text-align:center;line-height:22px;font-size:12px;font-weight:700;margin-right:10px;">1</span>
+            <span style="font-size:14px;color:#1a1a1a;">Risponda a questa email confermando l'accettazione del preventivo.</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;vertical-align:top;">
+            <span style="display:inline-block;width:22px;height:22px;background:#0B1F33;color:#fff;border-radius:50%;text-align:center;line-height:22px;font-size:12px;font-weight:700;margin-right:10px;">2</span>
+            <span style="font-size:14px;color:#1a1a1a;">La contatteremo per definire data e orario di ritiro.</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:8px 0;vertical-align:top;">
+            <span style="display:inline-block;width:22px;height:22px;background:#0B1F33;color:#fff;border-radius:50%;text-align:center;line-height:22px;font-size:12px;font-weight:700;margin-right:10px;">3</span>
+            <span style="font-size:14px;color:#1a1a1a;">La spedizione viene ritirata, monitorata e consegnata con documentazione completa.</span>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Quote ref -->
+  <tr>
+    <td style="padding:20px 32px 0;">
+      <p style="margin:0;font-size:12px;color:#aaa;">
+        Rif. preventivo: <strong>#{{quote_id}}</strong>
+      </p>
+    </td>
+  </tr>
+
+  <!-- Contact box -->
+  <tr>
+    <td style="padding:20px 32px 32px;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e8e8e8;border-radius:6px;">
+        <tr>
+          <td style="padding:16px 20px;">
+            <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#1a1a1a;">Hai domande?</p>
+            <p style="margin:0;font-size:13px;color:#555;line-height:1.6;">
+              Rispondi a questa email o contattaci direttamente.<br>
+              Risponderemo entro l'orario lavorativo.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Footer -->
+  <tr>
+    <td style="background:#f4f4f5;padding:16px 32px;border-top:1px solid #e8e8e8;">
+      <p style="margin:0;font-size:11px;color:#aaa;text-align:center;">
+        Trasporti Leonardo Group &nbsp;·&nbsp;
+        Trasporto frigorifero ATP, pallet e misto ADR &nbsp;·&nbsp;
+        Lombardia — Centro Italia
+      </p>
+    </td>
+  </tr>
+
+</table>
+</td></tr>
+</table>
+
+</body>
+</html>

@@ -80,6 +80,7 @@
               <div class="form-group">
                 <label class="form-label form-required" for="nome">Nome e cognome</label>
                 <input type="text" id="nome" name="nome" class="form-field" placeholder="Es. Marco Bianchi" required autocomplete="name">
+                <span class="form-error-text" id="nome-error" style="display:none;"></span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="azienda">Azienda</label>
@@ -91,6 +92,7 @@
               <div class="form-group">
                 <label class="form-label form-required" for="telefono">Telefono</label>
                 <input type="tel" id="telefono" name="telefono" class="form-field" placeholder="Es. +39 333 0000000" required autocomplete="tel">
+                <span class="form-error-text" id="telefono-error" style="display:none;"></span>
               </div>
               <div class="form-group">
                 <label class="form-label" for="email">Email</label>
@@ -100,9 +102,18 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:0;">
               <div class="form-group">
-                <label class="form-label" for="tratta">Tratta di interesse</label>
-                <input type="text" id="tratta" name="tratta" class="form-field" placeholder="Es. Milano – Pescara" autocomplete="off">
+                <label class="form-label form-required" for="partenza">Partenza merce</label>
+                <input type="text" id="partenza" name="partenza" class="form-field" placeholder="Es. Milano" required autocomplete="off">
+                <span class="form-error-text" id="partenza-error" style="display:none;"></span>
               </div>
+              <div class="form-group">
+                <label class="form-label form-required" for="scarico">Scarico merce</label>
+                <input type="text" id="scarico" name="scarico" class="form-field" placeholder="Es. Pescara" required autocomplete="off">
+                <span class="form-error-text" id="scarico-error" style="display:none;"></span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:0;">
               <div class="form-group">
                 <label class="form-label" for="servizio">Tipo di servizio</label>
                 <select id="servizio" name="servizio" class="form-field">
@@ -113,11 +124,34 @@
                   <option value="altro">Altro / Non so ancora</option>
                 </select>
               </div>
+              <div class="form-group">
+                <label class="form-label" for="merce">Tipo di merce</label>
+                <input type="text" id="merce" name="merce" class="form-field" placeholder="Es. Prodotti alimentari refrigerati" autocomplete="off">
+              </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="merce">Tipo di merce</label>
-              <input type="text" id="merce" name="merce" class="form-field" placeholder="Es. Prodotti alimentari refrigerati" autocomplete="off">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:0;">
+              <div class="form-group">
+                <label class="form-label" for="pallets">Numero di pallet</label>
+                <input type="number" id="pallets" name="pallets" class="form-field" placeholder="Es. 4" min="1" max="100" autocomplete="off">
+                <span class="form-error-text" id="pallets-error" style="display:none;"></span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="peso_kg">Peso stimato (kg)</label>
+                <input type="number" id="peso_kg" name="peso_kg" class="form-field" placeholder="Es. 800" min="1" max="50000" autocomplete="off">
+                <span class="form-error-text" id="peso_kg-error" style="display:none;"></span>
+              </div>
+            </div>
+
+            <div class="form-checkboxes">
+              <label class="form-checkbox">
+                <input type="checkbox" id="urgente" name="urgente">
+                <span>Urgente</span>
+              </label>
+              <label class="form-checkbox">
+                <input type="checkbox" id="tail_lift" name="tail_lift">
+                <span>Sponda idraulica richiesta</span>
+              </label>
             </div>
 
             <div class="form-group">

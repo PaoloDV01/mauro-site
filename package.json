@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "serve": "node serve.mjs",
+    "serve": "node --env-file=.env server.mjs",
+    "serve:static": "node serve.mjs",
     "shot": "node screenshot.mjs http://localhost:3000"
   },
   "dependencies": {
+    "express": "^4.21.0",
+    "nodemailer": "^8.0.5",
     "puppeteer": "^23.0.0"
   }
 }

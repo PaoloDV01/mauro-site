@@ -1,0 +1,47 @@
+{
+  "_comment": "Tariffe base per servizio e fascia km — fonte: spec-sistema-preventivi-tlg.md",
+  "version": "1.0.0",
+  "services": {
+    "standard": {
+      "label": "Trasporto Standard / Pallet",
+      "base_rate_per_km": 0.95,
+      "distance_bands": [
+        { "from_km": 0, "to_km": 150, "rate_per_km": 1.10 },
+        { "from_km": 151, "to_km": 350, "rate_per_km": 0.98 },
+        { "from_km": 351, "to_km": 600, "rate_per_km": 0.90 },
+        { "from_km": 601, "to_km": 999, "rate_per_km": 0.85 }
+      ]
+    },
+    "frigo": {
+      "label": "Trasporto Frigorifero ATP",
+      "base_rate_per_km": 1.30,
+      "distance_bands": [
+        { "from_km": 0, "to_km": 150, "rate_per_km": 1.55 },
+        { "from_km": 151, "to_km": 350, "rate_per_km": 1.38 },
+        { "from_km": 351, "to_km": 600, "rate_per_km": 1.28 },
+        { "from_km": 601, "to_km": 999, "rate_per_km": 1.18 }
+      ]
+    },
+    "misto_adr": {
+      "label": "Trasporto Misto / ADR",
+      "base_rate_per_km": 1.05,
+      "distance_bands": [
+        { "from_km": 0, "to_km": 150, "rate_per_km": 1.25 },
+        { "from_km": 151, "to_km": 350, "rate_per_km": 1.10 },
+        { "from_km": 351, "to_km": 600, "rate_per_km": 1.02 },
+        { "from_km": 601, "to_km": 999, "rate_per_km": 0.96 }
+      ]
+    }
+  },
+  "known_routes": [
+    { "from": "Milano", "to": "Pescara", "km": 490 },
+    { "from": "Milano", "to": "Roma", "km": 580 },
+    { "from": "Milano", "to": "Firenze", "km": 295 },
+    { "from": "Milano", "to": "Bologna", "km": 215 },
+    { "from": "Pescara", "to": "Roma", "km": 210 },
+    { "from": "Pescara", "to": "Rimini", "km": 200 },
+    { "from": "Pescara", "to": "Bologna", "km": 315 },
+    { "from": "Pescara", "to": "San Benedetto del Tronto", "km": 80 },
+    { "from": "Milano", "to": "Rimini", "km": 335 }
+  ]
+}

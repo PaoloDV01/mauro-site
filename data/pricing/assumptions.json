@@ -1,0 +1,30 @@
+{
+  "_comment": "Parametri globali motore preventivi TLG — fonte: spec-sistema-preventivi-tlg.md",
+  "version": "1.0.0",
+  "rounding": {
+    "step": 5,
+    "direction": "ceil"
+  },
+  "margins": {
+    "target_pct": 35,
+    "minimum_pct": 20,
+    "minimum_eur": 80
+  },
+  "vehicle_cost_per_km": 0.95,
+  "toll_per_km": 0.12,
+  "sourcing_buffer_pct": 8,
+  "overhead_pct": 6,
+  "payment_risk_buffer_pct": 3,
+  "minimums": {
+    "trip_eur": 180,
+    "frigo_trip_eur": 240
+  },
+  "review_thresholds": {
+    "max_distance_km": 800,
+    "max_pallets": 33,
+    "max_weight_kg": 24000,
+    "max_linear_meters": 13.6,
+    "max_cargo_value_eur": 50000,
+    "express_hours_threshold": 24
+  }
+}

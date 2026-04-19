@@ -11,3 +11,12 @@ graphify-out/
 
 # Confidential business documents
 Proposition/
+docs/preventivi/*.xlsx
+
+# Runtime data — never commit (contains real quote requests)
+data/quotes.json
+
+# Environment / secrets
+.env
+.env.local
+.env.*

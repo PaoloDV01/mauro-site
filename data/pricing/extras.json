@@ -1,0 +1,59 @@
+{
+  "_comment": "Supplementi e modificatori prezzo — fonte: spec-sistema-preventivi-tlg.md",
+  "version": "1.0.0",
+  "extras": {
+    "urgency": {
+      "label": "Urgenza (ritiro < 24h)",
+      "type": "pct_on_base",
+      "value": 25,
+      "triggers_review": true
+    },
+    "tail_lift": {
+      "label": "Sponda idraulica",
+      "type": "flat_eur",
+      "value": 60
+    },
+    "weekend": {
+      "label": "Ritiro o consegna sabato/domenica",
+      "type": "flat_eur",
+      "value": 80
+    },
+    "extra_stop": {
+      "label": "Fermata aggiuntiva (per fermata)",
+      "type": "flat_eur",
+      "value": 45
+    },
+    "waiting_time": {
+      "label": "Attesa oltre 45 min (per ora)",
+      "type": "flat_eur",
+      "value": 35
+    },
+    "insurance": {
+      "label": "Assicurazione merce valore dichiarato",
+      "type": "pct_on_cargo_value",
+      "value": 0.3,
+      "min_eur": 30
+    },
+    "adr": {
+      "label": "Trasporto merci pericolose ADR",
+      "type": "flat_eur",
+      "value": 120,
+      "triggers_review": true
+    },
+    "temperature_controlled": {
+      "label": "Temperatura controllata (già in tariffa frigo)",
+      "type": "included_in_frigo",
+      "value": 0
+    }
+  },
+  "review_flags": {
+    "adr": "Richiesta ADR — sempre review manuale",
+    "islands": "Isole / estero / zone speciali",
+    "express": "Ritiro in meno di 24h",
+    "over_distance": "Distanza oltre soglia configurata",
+    "over_payload": "Fuori sagoma / troppo peso / troppi pallet",
+    "complex_multistop": "Multi-stop complesso (oltre 2 fermate)",
+    "high_value_cargo": "Merce ad alto valore dichiarato",
+    "strict_time_window": "Finestre orarie troppo rigide"
+  }
+}

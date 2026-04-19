@@ -687,6 +687,17 @@ textarea.form-field { resize: vertical; min-height: 100px; }
 }
 .form-note a { color: var(--gray-600); }
 
+/* Form error states */
+.form-field--error { border-color: #dc2626 !important; }
+.form-field--error:focus { border-color: #dc2626 !important; box-shadow: 0 0 0 3px rgba(220,38,38,.12) !important; }
+.form-error-text { display: block; margin-top: 5px; font-size: 0.8125rem; color: #dc2626; }
+.form-submit-error { margin-top: 14px; font-size: 0.875rem; color: #dc2626; }
+
+/* Form checkboxes */
+.form-checkboxes { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+.form-checkbox { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.9375rem; color: var(--text); user-select: none; }
+.form-checkbox input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; accent-color: var(--black); flex-shrink: 0; }
+
 /* Form success state */
 .form-success {
   display: none;

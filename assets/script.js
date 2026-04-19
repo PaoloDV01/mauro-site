@@ -89,9 +89,102 @@
   if (contactForm && contactSuccess) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      contactForm.style.display = 'none';
-      contactSuccess.classList.add('visible');
-      window.scrollTo({ top: contactSuccess.offsetTop - 100, behavior: 'smooth' });
+
+      // Clear previous errors
+      contactForm.querySelectorAll('.form-field--error').forEach(function (el) {
+        el.classList.remove('form-field--error');
+      });
+      contactForm.querySelectorAll('.form-error-text').forEach(function (el) {
+        el.style.display = 'none';
+        el.textContent = '';
+      });
+      var submitErrEl = contactForm.querySelector('.form-submit-error');
+      if (submitErrEl) submitErrEl.remove();
+
+      // Build payload
+      var fd = new FormData(contactForm);
+      var payload = {
+        nome:     (fd.get('nome') || '').trim(),
+        azienda:  (fd.get('azienda') || '').trim() || null,
+        telefono: (fd.get('telefono') || '').trim(),
+        email:    (fd.get('email') || '').trim() || null,
+        partenza: (fd.get('partenza') || '').trim(),
+        scarico:  (fd.get('scarico') || '').trim(),
+        servizio: (fd.get('servizio') || '').trim() || null,
+        merce:    (fd.get('merce') || '').trim() || null,
+        note:     (fd.get('note') || '').trim() || null,
+        urgente:   contactForm.querySelector('#urgente') ? contactForm.querySelector('#urgente').checked : false,
+        tail_lift: contactForm.querySelector('#tail_lift') ? contactForm.querySelector('#tail_lift').checked : false
+      };
+      var palletsVal = parseInt(fd.get('pallets'), 10);
+      if (!isNaN(palletsVal)) payload.pallets = palletsVal;
+      var pesoVal = parseInt(fd.get('peso_kg'), 10);
+      if (!isNaN(pesoVal)) payload.peso_kg = pesoVal;
+
+      // Submit state
+      var submitBtn = contactForm.querySelector('[type="submit"]');
+      var originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Invio in corso…';
+      }
+
+      fetch('/api/quotes/request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function (res) { return res.json().then(function (data) { return { status: res.status, data: data }; }); })
+      .then(function (r) {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHtml; }
+
+        if (r.status === 200 && r.data.ok) {
+          contactForm.style.display = 'none';
+          contactSuccess.classList.add('visible');
+          window.scrollTo({ top: contactSuccess.offsetTop - 100, behavior: 'smooth' });
+          return;
+        }
+
+        // Validation errors from API (422)
+        var errors = (r.data && r.data.errors) ? r.data.errors : [];
+        var fieldMap = { nome: 'nome', telefono: 'telefono', email: 'email',
+                         partenza: 'partenza', scarico: 'scarico',
+                         pallets: 'pallets', peso_kg: 'peso_kg' };
+        var handled = [];
+
+        errors.forEach(function (msg) {
+          var colon = msg.indexOf(':');
+          var fieldKey = colon > -1 ? msg.substring(0, colon).trim() : '';
+          var text = colon > -1 ? msg.substring(colon + 1).trim() : msg;
+          if (fieldMap[fieldKey]) {
+            var input = contactForm.querySelector('#' + fieldMap[fieldKey]);
+            var errorEl = document.getElementById(fieldMap[fieldKey] + '-error');
+            if (input) input.classList.add('form-field--error');
+            if (errorEl) { errorEl.textContent = text; errorEl.style.display = 'block'; }
+            handled.push(fieldKey);
+          }
+        });
+
+        // Any unhandled errors → show generic message below submit
+        var unhandled = errors.filter(function (msg) {
+          var colon = msg.indexOf(':');
+          var k = colon > -1 ? msg.substring(0, colon).trim() : '';
+          return !fieldMap[k];
+        });
+        if (unhandled.length || (!errors.length && !r.data.ok)) {
+          var p = document.createElement('p');
+          p.className = 'form-submit-error';
+          p.textContent = unhandled.length ? unhandled.join(' — ') : 'Si è verificato un errore. Riprova o chiamaci direttamente.';
+          submitBtn.parentNode.insertBefore(p, submitBtn.nextSibling);
+        }
+      })
+      .catch(function () {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = originalBtnHtml; }
+        var p = document.createElement('p');
+        p.className = 'form-submit-error';
+        p.textContent = 'Connessione non riuscita. Riprova o chiamaci direttamente.';
+        submitBtn.parentNode.insertBefore(p, submitBtn.nextSibling);
+      });
     });
   }
 
