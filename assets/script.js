@@ -639,4 +639,154 @@
     });
   }());
 
+  /* === ADDRESS AUTOCOMPLETE (Photon / OpenStreetMap) === */
+  (function () {
+    var PHOTON    = 'https://photon.komoot.io/api/';
+    var DELAY_MS  = 320;
+    var MIN_CHARS = 3;
+    // Bounding box: Italia
+    var BBOX      = '6.614,35.492,18.521,47.092';
+
+    function safeEsc(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function buildLabel(p) {
+      // Line 1: name (if different from street) or street+number
+      // Line 2: city + province/state
+      var top = [];
+      var sub = [];
+
+      if (p.name && p.name !== p.street) top.push(p.name);
+      if (p.street) {
+        var s = p.street + (p.housenumber ? ' ' + p.housenumber : '');
+        top.push(s);
+      }
+      if (!top.length && p.city)  top.push(p.city);
+      if (!top.length && p.county) top.push(p.county);
+
+      var city = p.city || p.town || p.village || p.municipality;
+      if (city) sub.push(city);
+      if (p.postcode) sub.push(p.postcode);
+      if (p.state && p.state !== city) sub.push(p.state);
+
+      var l1 = top.length ? '<strong>' + safeEsc(top.join(', ')) + '</strong>' : '';
+      var l2 = sub.length ? '<span class="ac-sub">' + safeEsc(sub.join(' — ')) + '</span>' : '';
+      return l1 + l2;
+    }
+
+    function buildValue(p) {
+      var parts = [];
+      if (p.name && p.name !== p.street) parts.push(p.name);
+      if (p.street) parts.push(p.street + (p.housenumber ? ' ' + p.housenumber : ''));
+      var city = p.city || p.town || p.village || p.municipality;
+      if (city) parts.push(city);
+      return parts.join(', ');
+    }
+
+    function initField(input) {
+      if (!input) return;
+
+      // Wrap input
+      var wrap = document.createElement('div');
+      wrap.className = 'autocomplete-wrapper';
+      input.parentNode.insertBefore(wrap, input);
+      wrap.appendChild(input);
+
+      // Dropdown
+      var dd = document.createElement('div');
+      dd.className = 'autocomplete-dropdown';
+      dd.setAttribute('role', 'listbox');
+      wrap.appendChild(dd);
+
+      var timer    = null;
+      var results  = [];
+      var active   = -1;
+
+      function close() {
+        dd.classList.remove('open');
+        active = -1;
+      }
+
+      function render(features) {
+        dd.innerHTML = '';
+        results = features;
+        active  = -1;
+        if (!features.length) { close(); return; }
+
+        features.forEach(function (f, i) {
+          var item = document.createElement('div');
+          item.className = 'autocomplete-item';
+          item.setAttribute('role', 'option');
+          item.innerHTML = buildLabel(f.properties);
+          item.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            pick(i);
+          });
+          dd.appendChild(item);
+        });
+        dd.classList.add('open');
+      }
+
+      function pick(i) {
+        if (!results[i]) return;
+        input.value = buildValue(results[i].properties);
+        close();
+        input.dispatchEvent(new Event('change'));
+        input.focus();
+      }
+
+      function highlight(i) {
+        var items = dd.querySelectorAll('.autocomplete-item');
+        items.forEach(function (el) { el.classList.remove('ac-active'); });
+        active = i;
+        if (i >= 0 && items[i]) {
+          items[i].classList.add('ac-active');
+          items[i].scrollIntoView({ block: 'nearest' });
+        }
+      }
+
+      input.addEventListener('input', function () {
+        clearTimeout(timer);
+        var q = input.value.trim();
+        if (q.length < MIN_CHARS) { close(); return; }
+
+        dd.innerHTML = '<div class="autocomplete-loading">Ricerca…</div>';
+        dd.classList.add('open');
+
+        timer = setTimeout(function () {
+          var url = PHOTON + '?q=' + encodeURIComponent(q) +
+                    '&limit=5&lang=it&bbox=' + BBOX;
+          fetch(url)
+            .then(function (r) { return r.json(); })
+            .then(function (data) { render(data.features || []); })
+            .catch(function () { close(); });
+        }, DELAY_MS);
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (!dd.classList.contains('open')) return;
+        var len = results.length;
+        if (e.key === 'ArrowDown')  { e.preventDefault(); highlight(Math.min(active + 1, len - 1)); }
+        else if (e.key === 'ArrowUp')   { e.preventDefault(); highlight(Math.max(active - 1, 0)); }
+        else if (e.key === 'Enter' && active >= 0) { e.preventDefault(); pick(active); }
+        else if (e.key === 'Escape')    { close(); }
+      });
+
+      input.addEventListener('blur', function () {
+        setTimeout(close, 160);
+      });
+    }
+
+    initField(document.getElementById('partenza'));
+    initField(document.getElementById('scarico'));
+
+    document.addEventListener('click', function (e) {
+      document.querySelectorAll('.autocomplete-dropdown.open').forEach(function (el) {
+        if (!el.parentNode.contains(e.target)) el.classList.remove('open');
+      });
+    });
+  }());
+
 })();
