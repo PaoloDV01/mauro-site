@@ -109,9 +109,15 @@ app.use((req, res) => {
 });
 
 /* ── Start ────────────────────────────────────────────────────── */
-app.listen(PORT, '127.0.0.1', () => {
-  console.log('');
-  console.log('  TLG server  →  http://localhost:' + PORT);
-  console.log('  Admin panel →  http://localhost:' + PORT + '/admin/quotes');
-  console.log('');
-});
+// In local dev: start HTTP server normally.
+// On Vercel (serverless): do NOT call listen — api/index.mjs exports the app.
+if (!process.env.VERCEL) {
+  app.listen(PORT, '127.0.0.1', () => {
+    console.log('');
+    console.log('  TLG server  →  http://localhost:' + PORT);
+    console.log('  Admin panel →  http://localhost:' + PORT + '/admin/quotes');
+    console.log('');
+  });
+}
+
+export default app;

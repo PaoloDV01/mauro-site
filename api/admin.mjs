@@ -14,34 +14,15 @@
  */
 
 import { Router } from 'express';
-import fs         from 'node:fs/promises';
-import path       from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { loadQuotes, saveQuotes } from './store.mjs';
 
 import { sendInternalQuoteEmail } from './mailer.mjs';
 import { sendClientQuoteEmail }   from './mailer.mjs';
 
-const __dirname   = path.dirname(fileURLToPath(import.meta.url));
-const QUOTES_FILE = path.join(__dirname, '..', 'data', 'quotes.json');
-
 const router = Router();
 
-/* ── DB helpers ───────────────────────────────────────────────── */
-
-async function readQuotes() {
-  try {
-    return JSON.parse(await fs.readFile(QUOTES_FILE, 'utf-8'));
-  } catch {
-    return [];
-  }
-}
-
-async function writeQuotes(quotes) {
-  await fs.writeFile(QUOTES_FILE, JSON.stringify(quotes, null, 2), 'utf-8');
-}
-
 async function findQuote(id) {
-  const quotes = await readQuotes();
+  const quotes = await loadQuotes();
   return { quotes, quote: quotes.find(q => q.id === id) || null };
 }
 
@@ -63,7 +44,7 @@ function verifyToken(quote, token) {
 /* ── GET /admin/quotes — list ─────────────────────────────────── */
 
 router.get('/quotes', async (_req, res) => {
-  const quotes = await readQuotes();
+  const quotes = await loadQuotes();
   const sorted = [...quotes].sort((a, b) =>
     new Date(b.createdAt) - new Date(a.createdAt)
   );
@@ -204,7 +185,7 @@ router.post('/quotes/:id/approve', requireToken, async (req, res) => {
   quote.approvedPrice = finalPrice;
   quote.updatedAt     = new Date().toISOString();
 
-  await writeQuotes(quotes);
+  await saveQuotes(quotes);
 
   /* Send client email */
   try {
@@ -243,7 +224,7 @@ router.post('/quotes/:id/update', requireToken, async (req, res) => {
   quote.adminNote     = req.body.admin_note?.trim() || null;
   quote.updatedAt     = new Date().toISOString();
 
-  await writeQuotes(quotes);
+  await saveQuotes(quotes);
 
   try {
     await sendClientQuoteEmail(quote);
@@ -276,7 +257,7 @@ router.post('/quotes/:id/reject', requireToken, async (req, res) => {
   quote.adminNote = req.body.admin_note?.trim() || null;
   quote.updatedAt = new Date().toISOString();
 
-  await writeQuotes(quotes);
+  await saveQuotes(quotes);
 
   res.send(adminPage('Respinto', `
     <h1>✗ Preventivo respinto</h1>

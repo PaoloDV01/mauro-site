@@ -8,33 +8,13 @@
 
 import { Router }     from 'express';
 import { randomUUID } from 'node:crypto';
-import fs             from 'node:fs/promises';
-import path           from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { loadQuotes, saveQuotes } from './store.mjs';
 
 import { getDistanceKm }  from './distance.mjs';
 import { calculateQuote } from './pricing-engine.mjs';
 import { sendInternalQuoteEmail } from './mailer.mjs';
 
-const __dirname    = path.dirname(fileURLToPath(import.meta.url));
-const QUOTES_FILE  = path.join(__dirname, '..', 'data', 'quotes.json');
-
 const router = Router();
-
-/* ── DB helpers (flat-file, Phase 1) ──────────────────────────── */
-
-async function readQuotes() {
-  try {
-    const raw = await fs.readFile(QUOTES_FILE, 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
-}
-
-async function writeQuotes(quotes) {
-  await fs.writeFile(QUOTES_FILE, JSON.stringify(quotes, null, 2), 'utf-8');
-}
 
 /* ── Input validation ─────────────────────────────────────────── */
 
@@ -139,9 +119,9 @@ router.post('/request', async (req, res) => {
     };
 
     /* Persist */
-    const quotes = await readQuotes();
+    const quotes = await loadQuotes();
     quotes.push(quote);
-    await writeQuotes(quotes);
+    await saveQuotes(quotes);
 
     /* Internal email to Mauro */
     try {
