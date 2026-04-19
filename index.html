@@ -64,21 +64,53 @@
   <div class="hi-wrapper" id="hi-wrapper">
     <div class="hi-stage">
 
-      <!-- Shared backgrounds -->
-      <div class="hi-grid" aria-hidden="true"></div>
+      <!-- Shared background glow -->
       <div class="hi-aurora" aria-hidden="true"></div>
 
       <!-- SCREEN 1: Brand Reveal -->
       <div class="hi-s1" id="hi-s1">
-        <p class="hi-s1__eyebrow" aria-hidden="true">TLG · Trasporti Leonardo Group</p>
-        <p class="hi-s1__heading">
-          Trasporti<br>Leonardo Group
-        </p>
-        <p class="hi-s1__sub">Trasporto frigorifero, pallet e misto tra Lombardia e Centro Italia.<br>Precisione operativa e risposta entro 24 ore lavorative.</p>
+
+        <!-- Background paths — animated SVG layer -->
+        <svg class="hi-s1__paths" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+          <!-- Directional bundle: bottom-left → upper-right sweep -->
+          <g fill="none" stroke-linecap="round">
+            <!-- Anchor paths — high visibility, define the composition -->
+            <path class="hi-pa" pathLength="1" stroke="rgba(210,218,228,0.42)" stroke-width="1.2" style="--pdur:80s;--pdel:0s;stroke-dasharray:0.78 0.22"
+                  d="M -240,880 C 200,540 440,200 840,85 C 1120,-30 1420,20 1640,-20"/>
+            <path class="hi-pa" pathLength="1" stroke="rgba(200,208,220,0.30)" stroke-width="1.0" style="--pdur:70s;--pdel:-18s;stroke-dasharray:0.72 0.28"
+                  d="M -180,940 C 260,600 500,265 900,150 C 1160,40 1450,70 1670,40"/>
+            <path class="hi-pa" pathLength="1" stroke="rgba(190,197,210,0.22)" stroke-width="0.85" style="--pdur:90s;--pdel:-35s;stroke-dasharray:0.68 0.32"
+                  d="M -120,990 C 300,660 560,340 940,225 C 1190,115 1460,140 1690,110"/>
+            <!-- Fill paths — add density to the bundle core -->
+            <path class="hi-pa" pathLength="1" stroke="rgba(184,192,204,0.18)" stroke-width="0.75" style="--pdur:65s;--pdel:-12s;stroke-dasharray:0.64 0.36"
+                  d="M -60,1030 C 340,720 620,420 980,310 C 1220,205 1470,230 1710,200"/>
+            <path class="hi-pa" pathLength="1" stroke="rgba(184,190,202,0.20)" stroke-width="0.80" style="--pdur:75s;--pdel:-48s;stroke-dasharray:0.66 0.34"
+                  d="M 20,1060 C 380,760 660,480 1000,365 C 1220,255 1480,280 1720,250"/>
+            <!-- Wide sweep — spatial breadth, anchors the lower zone -->
+            <path class="hi-pa" pathLength="1" stroke="rgba(184,190,199,0.14)" stroke-width="0.65" style="--pdur:100s;--pdel:-22s;stroke-dasharray:0.60 0.40"
+                  d="M -320,900 C 100,640 320,310 720,190 C 1040,85 1380,110 1620,80"/>
+            <path class="hi-pa" pathLength="1" stroke="rgba(184,190,199,0.12)" stroke-width="0.55" style="--pdur:85s;--pdel:-60s;stroke-dasharray:0.58 0.42"
+                  d="M 120,1070 C 460,840 700,580 1020,460 C 1240,350 1500,375 1740,345"/>
+            <!-- Depth whispers — extreme edges, near-invisible atmospheric presence -->
+            <path class="hi-pa" pathLength="1" stroke="rgba(184,190,199,0.08)" stroke-width="0.50" style="--pdur:110s;--pdel:-8s;stroke-dasharray:0.55 0.45"
+                  d="M -400,950 C 0,700 260,380 680,260 C 1000,150 1360,175 1600,145"/>
+            <path class="hi-pa" pathLength="1" stroke="rgba(184,190,199,0.07)" stroke-width="0.45" style="--pdur:95s;--pdel:-75s;stroke-dasharray:0.52 0.48"
+                  d="M 240,1060 C 560,860 780,640 1060,530 C 1280,425 1520,445 1760,420"/>
+          </g>
+        </svg>
+
+        <!-- Content -->
+        <div class="hi-s1__content">
+          <p class="hi-s1__eyebrow" aria-hidden="true">TLG · Trasporti Leonardo Group</p>
+          <p class="hi-s1__heading" id="hi-title" data-text="Trasporti Leonardo Group">Trasporti Leonardo Group</p>
+          <p class="hi-s1__sub" id="hi-sub">Trasporto frigorifero, pallet e misto tra Lombardia e Centro Italia.<br>Precisione operativa e risposta entro 24 ore lavorative.</p>
+        </div>
+
         <div class="hi-s1__scroll" aria-hidden="true">
           <span>Scorri per iniziare</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
+
       </div>
 
       <!-- SCREEN 2: Navigation Hub -->
