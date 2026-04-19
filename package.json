@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@upstash/redis": "^1.37.0",
+    "@vercel/analytics": "^2.0.1",
     "express": "^4.21.0",
     "nodemailer": "^8.0.5",
     "puppeteer": "^23.0.0"
